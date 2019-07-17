@@ -32,7 +32,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!-- BEGIN CONTENT BODY -->
                     <div class="page-content"  >
                     <!-- BEGIN PAGE HEAD-->
-                    <div class="page-head" style="display:none">
+                    <div class="page-head" >
                         <!-- BEGIN PAGE TITLE -->
                         <div class="page-title">
                             <h1>Survei
@@ -54,7 +54,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     </div>
                     <!-- END PAGE HEAD-->
                     <!-- BEGIN PAGE BASE CONTENT -->
-                    <div class="row" style="display:none">
+                    <div class="row" id="list_survei">
                         <div class="col-md-12">
                             <form class="form-horizontal " action="#">
                                 <div class="portlet">
@@ -66,7 +66,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     <span class="caption-subject bold uppercase"> Survei </span>
                                                 </div>
                                                 <div  class="text-align-reverse" >
-                                                                <a id="add_ruang" class="btn sbold green">
+                                                                <a id="add_survei" class="btn sbold green">
                                                                     <i class="fa fa-plus"></i> Add Survei </a>
                                                             </div>
                                             </div>
@@ -117,7 +117,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         </div>
                     </div>
                     <!-- END PAGE BASE CONTENT -->
-                    <div  id="form_detail">
+                    <div  id="form_detail" style="display:none;">
                                                             <div class="portlet light bordered">
                                                                 <div class="portlet-title">
                                                                     <div class="caption">
@@ -638,16 +638,16 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                         <input type="hidden" id="id_workshop" name="id_workshop" value="">
                                                                         
                                                                         <div class="modal-footer">
-                                                                        <button type="button" class="btn grey-salsa btn-outline" data-dismiss="modal"  onclick="javascript:tutup()"><i class="fa fa-close">Close</i></button>
+                                                                        <button type="button" class="btn grey-salsa" data-dismiss="modal"  onclick="javascript:tutup()"><i class="fa fa-close">Close</i></button>
                                                                         <!-- <button type="button" class="btn green" onclick="javascript:update()" id="save_changes" name="save_changes">
                                                                             <i class="fa fa-edit">Save changes</i> -->
-                                                                            <input class="btn green" type="submit" value="Save Change">
+                                                                            <input class="btn green" type="submit" value="Save">
                                                                         <!-- <button type="button" class="btn green" onclick="javascript:submit()" id="addnew" name="addnew">
                                                                             <i class="fa fa-plus">Add New</i> -->
                                                                         <!-- <a href="" class="btn btn-default"> Save changes</a>  -->
                                                                         <!-- </button> -->
-                                                                            <button type="button" class="btn red" onclick="javascript:delete_laporan()" id="delete_button" name="delete_button" >
-                                                                                <i class="fa fa-trash"></i> Delete</button>
+                                                                            <button type="button" class="btn blue"  id="next" name="next" >
+                                                                                <i class="fa fa-trash"></i> Next</button>
                                                                         </div>
                                                                     </form>
                                                                     <!-- END FORM-->
@@ -665,7 +665,14 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="quick-nav-overlay"></div>
         <!-- END QUICK NAV -->
         <script>
+                $('#add_survei').click(function(event) {
+                    document.getElementById("list_survei").style.display = "none";
+                    document.getElementById("form_detail").style.display = "";
+				});
                 
+                function tutup(){
+                    location.reload();
+                }
 
         </script>
     </body>
