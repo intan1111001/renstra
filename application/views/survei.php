@@ -138,15 +138,16 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                 <div class="col-md-11">
                                                                                     <div class="input-icon right">
                                                                                         <i class="fa fa-microphone"></i>
-                                                                                        <input type="text" class="form-control" placeholder="Right icon"> </div>
+                                                                                        <input class="form-control form-control-inline date-picker" size="16" type="text" value=""> </div>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group">
                                                                                 <label class="col-md-1 control-label">Unit</label>
                                                                                 <div class="col-md-11">
                                                                                     <div class="input-icon right">
-                                                                                        <i class="fa fa-microphone"></i>
-                                                                                        <input type="text" class="form-control" placeholder="Right icon"> </div>
+                                                                                        <select class="bs-select form-control" data-live-search="true" data-size="8">
+                                                                                        </select>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group">
@@ -162,7 +163,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                 <div class="col-md-11">
                                                                                     <div class="input-icon right">
                                                                                         <i class="fa fa-microphone"></i>
-                                                                                        <input type="text" class="form-control" placeholder="Right icon"> </div>
+                                                                                        <input type="text" class="form-control" placeholder="Right icon" value="Dikerjakan"> </div>
                                                                                 </div>
                                                                             </div>
                                                                          </div>
@@ -233,17 +234,82 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="form-group">
-                                                                                            <label class="col-md-6 ">Prodi mengidentifikasi kondisi lingkungan yang relevan secara komprehensif dan strategis</label>
-                                                                                            <div class="col-md-6">
-                                                                                                <div class="mt-radio-inline">
-                                                                                                    <label class="mt-radio">
-                                                                                                        <input type="radio" name="optionsRadios" id="optionsRadios4" value="option1" checked=""> Ya
-                                                                                                        <span></span>
-                                                                                                    </label>
-                                                                                                    <label class="mt-radio">
-                                                                                                        <input type="radio" name="optionsRadios" id="optionsRadios5" value="option2"> Tidak
-                                                                                                        <span></span>
-                                                                                                    </label>
+                                                                                        <div class="portlet light bordered">
+                                                                                                <div class="portlet-title">
+                                                                                                    <div class="caption">
+                                                                                                        <i class="icon-social-dribbble font-green"></i>
+                                                                                                        <span class="caption-subject font-green bold uppercase">Komponen</span>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="portlet-body">
+                                                                                                    <div class="table-scrollable">
+                                                                                                        <table class="table table-hover">
+                                                                                                            <thead>
+                                                                                                                <tr>
+                                                                                                                    <th> # </th>
+                                                                                                                    <th> Komponen </th>
+                                                                                                                    <th> Ketersediaan </th>
+                                                                                                                    <th> Kesesuaian </th>
+                                                                                                                </tr>
+                                                                                                            </thead>
+                                                                                                            <tbody>
+                                                                                                                <tr>
+                                                                                                                    <td> 1 </td>
+                                                                                                                    <td> Dok. Tracer studi </td>
+                                                                                                                    <td>
+                                                                                                                    <div class="mt-radio-inline">
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options1" id="optionsRadios4" value="option1" checked=""> Ada
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options1" id="optionsRadios5" value="option2"> Tidak
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                        </div> 
+                                                                                                                    </td>
+                                                                                                                    <td>  <div class="mt-radio-inline">
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options2" id="optionsRadios4" value="option2" checked=""> iya
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options2" id="optionsRadios5" value="option3"> Tidak
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                        </div> 
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                    <td> 2 </td>
+                                                                                                                    <td> Dok. Riset Pasar </td>
+                                                                                                                    <td>
+                                                                                                                    <div class="mt-radio-inline">
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options3" id="optionsRadios4" value="option4" checked=""> Ada
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options3" id="optionsRadios5" value="option5"> Tidak
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                        </div> 
+                                                                                                                    </td>
+                                                                                                                    <td>  <div class="mt-radio-inline">
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options4" id="optionsRadios4" value="option6" checked=""> iya
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options5" id="optionsRadios5" value="option7"> Tidak
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                        </div> 
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            </tbody>
+                                                                                                        </table>
+                                                                                                    </div>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -258,8 +324,101 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                 </div>
                                                                                 <div id="collapse_2" class="panel-collapse collapse">
                                                                                     <div class="panel-body" style=" overflow-y:auto;">
-                                                                                        <p> Menetapkan posisi relatif program studi terhadap lingkungannya,
-                                                                                        </p>
+                                                                                    <div class="form-group">
+                                                                                            <label class="col-md-6 ">Prodi mengidentifikasi kondisi lingkungan yang relevan secara komprehensif dan strategis</label>
+                                                                                            <div class="col-md-6">
+                                                                                                <div class="mt-radio-inline">
+                                                                                                    <label class="mt-radio">
+                                                                                                        <input type="radio" name="optionsRadios" id="optionsRadios4" value="option1" checked=""> Ya
+                                                                                                        <span></span>
+                                                                                                    </label>
+                                                                                                    <label class="mt-radio">
+                                                                                                        <input type="radio" name="optionsRadios" id="optionsRadios5" value="option2"> Tidak
+                                                                                                        <span></span>
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                        <div class="portlet light bordered">
+                                                                                                <div class="portlet-title">
+                                                                                                    <div class="caption">
+                                                                                                        <i class="icon-social-dribbble font-green"></i>
+                                                                                                        <span class="caption-subject font-green bold uppercase">Komponen</span>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="portlet-body">
+                                                                                                    <div class="table-scrollable">
+                                                                                                        <table class="table table-hover">
+                                                                                                            <thead>
+                                                                                                                <tr>
+                                                                                                                    <th> # </th>
+                                                                                                                    <th> Komponen </th>
+                                                                                                                    <th> Ketersediaan </th>
+                                                                                                                    <th> Kesesuaian </th>
+                                                                                                                </tr>
+                                                                                                            </thead>
+                                                                                                            <tbody>
+                                                                                                                <tr>
+                                                                                                                    <td> 1 </td>
+                                                                                                                    <td> Dok. Tracer studi </td>
+                                                                                                                    <td>
+                                                                                                                    <div class="mt-radio-inline">
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options1" id="optionsRadios4" value="option1" checked=""> Ada
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options1" id="optionsRadios5" value="option2"> Tidak
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                        </div> 
+                                                                                                                    </td>
+                                                                                                                    <td>  <div class="mt-radio-inline">
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options2" id="optionsRadios4" value="option2" checked=""> iya
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options2" id="optionsRadios5" value="option3"> Tidak
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                        </div> 
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                    <td> 2 </td>
+                                                                                                                    <td> Dok. Riset Pasar </td>
+                                                                                                                    <td>
+                                                                                                                    <div class="mt-radio-inline">
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options3" id="optionsRadios4" value="option4" checked=""> Ada
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options3" id="optionsRadios5" value="option5"> Tidak
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                        </div> 
+                                                                                                                    </td>
+                                                                                                                    <td>  <div class="mt-radio-inline">
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options4" id="optionsRadios4" value="option6" checked=""> iya
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options5" id="optionsRadios5" value="option7"> Tidak
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                        </div> 
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            </tbody>
+                                                                                                        </table>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -271,9 +430,101 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                 </div>
                                                                                 <div id="collapse_3" class="panel-collapse collapse">
                                                                                     <div class="panel-body">
-                                                                                        <p> Menggunakan hasil identifikasi dan posisi yang ditetapkan untuk melakukan analisis
-
-                                                                                        </p>
+                                                                                    <div class="form-group">
+                                                                                            <label class="col-md-6 ">Prodi mengidentifikasi kondisi lingkungan yang relevan secara komprehensif dan strategis</label>
+                                                                                            <div class="col-md-6">
+                                                                                                <div class="mt-radio-inline">
+                                                                                                    <label class="mt-radio">
+                                                                                                        <input type="radio" name="optionsRadios" id="optionsRadios4" value="option1" checked=""> Ya
+                                                                                                        <span></span>
+                                                                                                    </label>
+                                                                                                    <label class="mt-radio">
+                                                                                                        <input type="radio" name="optionsRadios" id="optionsRadios5" value="option2"> Tidak
+                                                                                                        <span></span>
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                        <div class="portlet light bordered">
+                                                                                                <div class="portlet-title">
+                                                                                                    <div class="caption">
+                                                                                                        <i class="icon-social-dribbble font-green"></i>
+                                                                                                        <span class="caption-subject font-green bold uppercase">Komponen</span>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="portlet-body">
+                                                                                                    <div class="table-scrollable">
+                                                                                                        <table class="table table-hover">
+                                                                                                            <thead>
+                                                                                                                <tr>
+                                                                                                                    <th> # </th>
+                                                                                                                    <th> Komponen </th>
+                                                                                                                    <th> Ketersediaan </th>
+                                                                                                                    <th> Kesesuaian </th>
+                                                                                                                </tr>
+                                                                                                            </thead>
+                                                                                                            <tbody>
+                                                                                                                <tr>
+                                                                                                                    <td> 1 </td>
+                                                                                                                    <td> Dok. Tracer studi </td>
+                                                                                                                    <td>
+                                                                                                                    <div class="mt-radio-inline">
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options1" id="optionsRadios4" value="option1" checked=""> Ada
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options1" id="optionsRadios5" value="option2"> Tidak
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                        </div> 
+                                                                                                                    </td>
+                                                                                                                    <td>  <div class="mt-radio-inline">
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options2" id="optionsRadios4" value="option2" checked=""> iya
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options2" id="optionsRadios5" value="option3"> Tidak
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                        </div> 
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                    <td> 2 </td>
+                                                                                                                    <td> Dok. Riset Pasar </td>
+                                                                                                                    <td>
+                                                                                                                    <div class="mt-radio-inline">
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options3" id="optionsRadios4" value="option4" checked=""> Ada
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options3" id="optionsRadios5" value="option5"> Tidak
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                        </div> 
+                                                                                                                    </td>
+                                                                                                                    <td>  <div class="mt-radio-inline">
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options4" id="optionsRadios4" value="option6" checked=""> iya
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options5" id="optionsRadios5" value="option7"> Tidak
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                        </div> 
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            </tbody>
+                                                                                                        </table>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -285,13 +536,101 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                 </div>
                                                                                 <div id="collapse_4" class="panel-collapse collapse">
                                                                                     <div class="panel-body">
-                                                                                        <p> Duis autem vel eum iriure dolor in hendrerit in vulputate. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut. </p>
-                                                                                        <p> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                                                                            Brunch 3 wolf moon tempor. </p>
-                                                                                        <p> Duis autem vel eum iriure dolor in hendrerit in vulputate. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut. </p>
-                                                                                        <p>
-                                                                                            <a class="btn red" href="ui_tabs_accordions_navs.html#collapse_4" target="_blank"> Activate this section via URL </a>
-                                                                                        </p>
+                                                                                    <div class="form-group">
+                                                                                            <label class="col-md-6 ">Prodi mengidentifikasi kondisi lingkungan yang relevan secara komprehensif dan strategis</label>
+                                                                                            <div class="col-md-6">
+                                                                                                <div class="mt-radio-inline">
+                                                                                                    <label class="mt-radio">
+                                                                                                        <input type="radio" name="optionsRadios" id="optionsRadios4" value="option1" checked=""> Ya
+                                                                                                        <span></span>
+                                                                                                    </label>
+                                                                                                    <label class="mt-radio">
+                                                                                                        <input type="radio" name="optionsRadios" id="optionsRadios5" value="option2"> Tidak
+                                                                                                        <span></span>
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                        <div class="portlet light bordered">
+                                                                                                <div class="portlet-title">
+                                                                                                    <div class="caption">
+                                                                                                        <i class="icon-social-dribbble font-green"></i>
+                                                                                                        <span class="caption-subject font-green bold uppercase">Komponen</span>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="portlet-body">
+                                                                                                    <div class="table-scrollable">
+                                                                                                        <table class="table table-hover">
+                                                                                                            <thead>
+                                                                                                                <tr>
+                                                                                                                    <th> # </th>
+                                                                                                                    <th> Komponen </th>
+                                                                                                                    <th> Ketersediaan </th>
+                                                                                                                    <th> Kesesuaian </th>
+                                                                                                                </tr>
+                                                                                                            </thead>
+                                                                                                            <tbody>
+                                                                                                                <tr>
+                                                                                                                    <td> 1 </td>
+                                                                                                                    <td> Dok. Tracer studi </td>
+                                                                                                                    <td>
+                                                                                                                    <div class="mt-radio-inline">
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options1" id="optionsRadios4" value="option1" checked=""> Ada
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options1" id="optionsRadios5" value="option2"> Tidak
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                        </div> 
+                                                                                                                    </td>
+                                                                                                                    <td>  <div class="mt-radio-inline">
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options2" id="optionsRadios4" value="option2" checked=""> iya
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options2" id="optionsRadios5" value="option3"> Tidak
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                        </div> 
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                    <td> 2 </td>
+                                                                                                                    <td> Dok. Riset Pasar </td>
+                                                                                                                    <td>
+                                                                                                                    <div class="mt-radio-inline">
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options3" id="optionsRadios4" value="option4" checked=""> Ada
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options3" id="optionsRadios5" value="option5"> Tidak
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                        </div> 
+                                                                                                                    </td>
+                                                                                                                    <td>  <div class="mt-radio-inline">
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options4" id="optionsRadios4" value="option6" checked=""> iya
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                            <label class="mt-radio">
+                                                                                                                                <input type="radio" name="options5" id="optionsRadios5" value="option7"> Tidak
+                                                                                                                                <span></span>
+                                                                                                                            </label>
+                                                                                                                        </div> 
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            </tbody>
+                                                                                                        </table>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
