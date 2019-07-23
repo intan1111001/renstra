@@ -5,7 +5,7 @@
                 <!-- BEGIN LOGO -->
                 <div class="page-logo">
                     <a href="<?php echo "assets/theme/assets/"; ?>index.html">
-                        <img src="<?php echo "assets/"; ?>theme/assets/layouts/layout4/img/logo_1.png" alt="logo"  style="height:85px;"/> </a>
+                        <!-- <img src="<?php echo "assets/"; ?>theme/assets/layouts/layout4/img/logo_1.png" alt="logo"  style="height:85px;"/> </a> -->
                         <!-- <div>
                         <h1 style="font-size: 24px;color: white;">e-Event</h1><br/>
                                 <small style="font-size: 24px;color: white;">UIN Sunan Ampel</small>

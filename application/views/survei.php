@@ -117,7 +117,70 @@ License: You must have a valid license purchased only from themeforest(the above
                         </div>
                     </div>
                     <!-- END PAGE BASE CONTENT -->
-                    <div  id="form_detail" style="display:none;">
+                    <div  id="form_detail_header" style="display:none;">
+                    <div class="portlet light bordered">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="icon-equalizer font-blue-hoki"></i>
+                                <span class="caption-subject font-blue-hoki bold uppercase">Detail Survei</span>
+                            </div>
+                        </div>
+                        <div class="portlet-body form">
+                            <!-- BEGIN FORM-->
+                            <form id="editform1" class="form-horizontal">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Info Surveyor</h3>
+                                </div>
+                                <div class="panel-body"> 
+                                    <div class="form-group">
+                                        <label class="col-md-1 control-label">Tanggal Survei</label>
+                                        <div class="col-md-11">
+                                            <div class="input-icon right">
+                                                <i class="fa fa-microphone"></i>
+                                                <input class="form-control form-control-inline date-picker" size="16" type="text" value=""> </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-1 control-label">Unit</label>
+                                        <div class="col-md-11">
+                                            <div class="input-icon right">
+                                                <select class="bs-select form-control" data-live-search="true" data-size="8">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-1 control-label">Surveyor</label>
+                                        <div class="col-md-11">
+                                            <div class="input-icon right">
+                                                <i class="fa fa-microphone"></i>
+                                                <input type="text" class="form-control" placeholder="Right icon"> </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-1 control-label">Status</label>
+                                        <div class="col-md-11">
+                                            <div class="input-icon right">
+                                                <i class="fa fa-microphone"></i>
+                                                <input type="text" class="form-control" placeholder="Right icon" value="Dikerjakan"> </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                            </div>
+                                
+                                <div class="modal-footer">
+                                <button type="button" class="btn grey-salsa" data-dismiss="modal"  onclick="javascript:tutup()"><i class="fa fa-close">Close</i></button>
+                                    <input class="btn green" type="submit" value="Save">
+                                    <button type="button" class="btn blue"  id="next_body_detail" name="next_body_detail" >
+                                        <i class="fa fa-trash"></i> Next</button>
+                                </div>
+                            </form>
+                            <!-- END FORM-->
+                        </div>
+                    </div>
+                </div>
+                    <div  id="form_detail_body" style="display:none;">
                                                             <div class="portlet light bordered">
                                                                 <div class="portlet-title">
                                                                     <div class="caption">
@@ -128,46 +191,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                 <div class="portlet-body form">
                                                                     <!-- BEGIN FORM-->
                                                                     <form id="editform1" class="form-horizontal">
-                                                                    <div class="panel panel-info">
-                                                                        <div class="panel-heading">
-                                                                            <h3 class="panel-title">Info Surveyor</h3>
-                                                                        </div>
-                                                                        <div class="panel-body"> 
-                                                                            <div class="form-group">
-                                                                                <label class="col-md-1 control-label">Tanggal Survei</label>
-                                                                                <div class="col-md-11">
-                                                                                    <div class="input-icon right">
-                                                                                        <i class="fa fa-microphone"></i>
-                                                                                        <input class="form-control form-control-inline date-picker" size="16" type="text" value=""> </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label class="col-md-1 control-label">Unit</label>
-                                                                                <div class="col-md-11">
-                                                                                    <div class="input-icon right">
-                                                                                        <select class="bs-select form-control" data-live-search="true" data-size="8">
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label class="col-md-1 control-label">Surveyor</label>
-                                                                                <div class="col-md-11">
-                                                                                    <div class="input-icon right">
-                                                                                        <i class="fa fa-microphone"></i>
-                                                                                        <input type="text" class="form-control" placeholder="Right icon"> </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label class="col-md-1 control-label">Status</label>
-                                                                                <div class="col-md-11">
-                                                                                    <div class="input-icon right">
-                                                                                        <i class="fa fa-microphone"></i>
-                                                                                        <input type="text" class="form-control" placeholder="Right icon" value="Dikerjakan"> </div>
-                                                                                </div>
-                                                                            </div>
-                                                                         </div>
-                                                                    </div>
                                                                     <div class="row margin-bottom-20">
                                                                             <div class="col-lg-4 col-md-6" >
                                                                                 <div class="portlet light" style="background: aliceblue;">
@@ -655,9 +678,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             </div>
                                                         </div>
                 </div>
-                
                 <!-- END CONTENT BODY -->
-			</div>
+		</div>
 	
         <!-- END CONTAINER -->
         <?php $this->load->view('template/footer') ?>
@@ -667,7 +689,12 @@ License: You must have a valid license purchased only from themeforest(the above
         <script>
                 $('#add_survei').click(function(event) {
                     document.getElementById("list_survei").style.display = "none";
-                    document.getElementById("form_detail").style.display = "";
+                    document.getElementById("form_detail_header").style.display = "";
+				});
+
+                $('#next_body_detail').click(function(event) {
+                    document.getElementById("form_detail_header").style.display = "none";
+                    document.getElementById("form_detail_body").style.display = "";
 				});
                 
                 function tutup(){
