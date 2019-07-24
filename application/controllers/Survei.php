@@ -27,12 +27,17 @@ class Survei extends CI_Controller {
         { 
         parent::__construct(); 
         $this->load->model('Survei_model'); 
+        $this->load->model('Elemen_model'); 
         } 
  
     public function index() 
         { 
             
-        $data['listsurvei'] = $this->Survei_model->get_all(); 
+		$data['listsurvei'] = $this->Survei_model->get_all(); 
+		$res = $this->Elemen_model->getdatasurvei();
+		$data['capaian'] = $res["capaian"]; 
+		$data['subindikator'] = $res["subindikator"]; 
+		$data['komponen'] = $res["komponen"]; 
         $this->load->view('template/head'); 
         $this->load->view('template/core_plugins'); 
         $this->load->view('survei', $data); 
