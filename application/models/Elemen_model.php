@@ -52,17 +52,17 @@ class Elemen_model extends CI_Model
         $this->sifasum->delete($this->table); 
         } 
 
-    function getdatasurvei(){
+    function getdatasurvei($id){
 
-        $sql = "select e.id id_elemen, e.capaian, e.jenis, i.id indokator_id, i.jenis indikator_jenis  FROM elemen e LEFT JOIN indikator i ON e.id = i.elemen_id";
+        $sql = "select e.id id_elemen, e.capaian, e.jenis, i.id indokator_id, i.jenis indikator_jenis  FROM elemen e LEFT JOIN indikator i ON e.id = i.elemen_id where i.id = $id";
         $query = $this->db->query($sql);
         $capaian = $query->result();
 
-        $sql = "select s.id, indikator_id, s.jenis FROM elemen e JOIN indikator i ON e.id = i.elemen_id JOIN subindikator s ON i.id = s.indikator_id";
+        $sql = "select s.id, indikator_id, s.jenis FROM elemen e JOIN indikator i ON e.id = i.elemen_id JOIN subindikator s ON i.id = s.indikator_id  where i.id = $id";
         $query = $this->db->query($sql);
         $subindikator = $query->result();
 
-        $sql = "select k.id,subindikator_id, k.jenis FROM elemen e JOIN indikator i ON e.id = i.elemen_id JOIN subindikator s ON i.id = s.indikator_id JOIN komponen k ON k.subindikator_id = s.id";
+        $sql = "select k.id,subindikator_id, k.jenis FROM elemen e JOIN indikator i ON e.id = i.elemen_id JOIN subindikator s ON i.id = s.indikator_id JOIN komponen k ON k.subindikator_id = s.id  where i.id = $id";
         $query = $this->db->query($sql);
         $komponen = $query->result();
 

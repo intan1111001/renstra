@@ -34,16 +34,20 @@ class Survei extends CI_Controller {
         { 
             
 		$data['listsurvei'] = $this->Survei_model->get_all(); 
-		$res = $this->Elemen_model->getdatasurvei();
+        $this->load->view('template/head'); 
+        $this->load->view('template/core_plugins'); 
+        $this->load->view('survei/survei', $data); 
+        } 
+ 
+	public function indikator($id=1){	
+		$res = $this->Elemen_model->getdatasurvei($id);
 		$data['capaian'] = $res["capaian"]; 
 		$data['subindikator'] = $res["subindikator"]; 
 		$data['komponen'] = $res["komponen"]; 
-        $this->load->view('template/head'); 
+         $this->load->view('template/head'); 
         $this->load->view('template/core_plugins'); 
-        $this->load->view('survei', $data); 
-        } 
- 
-
+        $this->load->view('survei/surveidetail', $data); 
+	}
  
     
 }
