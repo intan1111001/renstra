@@ -52,17 +52,20 @@ class Elemen_model extends CI_Model
         $this->db->delete($this->table); 
         } 
 
-    function getdatasurvei($id){
+    function getdatasurvei($id,$id_survei){
 
         $sql = "select e.id id_elemen, e.capaian, e.jenis, i.id indokator_id, i.jenis indikator_jenis  FROM elemen e LEFT JOIN indikator i ON e.id = i.elemen_id where i.id = $id";
         $query = $this->db->query($sql);
         $capaian = $query->result();
 
-        $sql = "select s.id, indikator_id, s.jenis FROM elemen e JOIN indikator i ON e.id = i.elemen_id JOIN subindikator s ON i.id = s.indikator_id  where i.id = $id";
+        $sql = "select s.id, indikator_id, s.jenis, COALESCE(dilakukan,-1) AS dilakukan FROM elemen e JOIN indikator i ON e.id = i.elemen_id JOIN subindikator s ON i.id = s.indikator_id 
+        LEFT JOIN tindakan t ON t.subindikator_id = s.id AND t.survei_id = $id_survei where i.id = $id";
         $query = $this->db->query($sql);
         $subindikator = $query->result();
 
-        $sql = "select k.id,subindikator_id, k.jenis FROM elemen e JOIN indikator i ON e.id = i.elemen_id JOIN subindikator s ON i.id = s.indikator_id JOIN komponen k ON k.subindikator_id = s.id  where i.id = $id";
+        $sql = "select k.id,subindikator_id, k.jenis, COALESCE(ketersediaan,-1) ketersediaan,COALESCE(kesesuaian,-1) kesesuaian  FROM elemen e JOIN indikator i ON e.id = i.elemen_id JOIN subindikator s ON i.id = s.indikator_id JOIN komponen k ON k.subindikator_id = s.id  
+        LEFT JOIN dokpendukung d ON d.komponen_id = k.id AND d.survei_id = $id_survei
+        where i.id = $id";
         $query = $this->db->query($sql);
         $komponen = $query->result();
 

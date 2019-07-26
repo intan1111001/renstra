@@ -79,6 +79,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <th> Surveyor</th>
                                                             <th> Unit </th>
                                                             <th> Status </th>
+                                                            <th> Action </th>
                                                         </tr>
                                                     </thead>
                                                     <tbody id="upcoming_table_body">
@@ -108,6 +109,19 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                         echo "Selesai";
                                                                                     }?> 
                                                                         </td> 
+                                                                        
+                                                                        <td >
+
+                                                                        <?php   if($survei->status == 1){
+                                                                                      ?> 
+                                                                                      <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" onclick="javascript:edit('<?php echo $survei->id ?>')"> Resume
+                                                                                      </button> <?php
+                                                                                    } 
+                                                                                    else if($survei->status == 2){
+                                                                                        ?> <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" onclick=""> Detail
+                                                                                    </button>
+                                                                                   <?php }?> 
+                                                                        </td>
                                                                     </tr> 
                                                                     <?php 
                                                                 } 
@@ -223,6 +237,13 @@ License: You must have a valid license purchased only from themeforest(the above
                 });
             });
                 
+                function edit(id){
+
+                    $.get("<?php echo base_url();?>Survei/read/"+id, function( data ) {
+                        window.location.href = "<?php echo base_url();?>Survei/indikator/"+ data["id"] +"/"+ (parseInt(data["indikator_terakhir"])+1);
+                    });
+                }
+
                 function tutup(){
                     location.reload();
                 }

@@ -28,6 +28,8 @@ class Survei extends CI_Controller {
         parent::__construct(); 
         $this->load->model('Survei_model'); 
 		$this->load->model('Elemen_model'); 
+		$this->load->model('Tindakan_model'); 
+		$this->load->model('Dokpendukung_model');
 		$id = '195709051988031002'; //super admin
 		$pegawai = $this->Survei_model->get_pegawai($id);
 		$newdata = array(
@@ -55,14 +57,23 @@ class Survei extends CI_Controller {
         $this->load->view('survei/survei', $data); 
         } 
  
-	public function indikator($id=1){	
-		$res = $this->Elemen_model->getdatasurvei($id);
+	public function indikator($id_survei,$id){	
+		$res = $this->Elemen_model->getdatasurvei($id, $id_survei);
 		$data['capaian'] = $res["capaian"]; 
 		$data['subindikator'] = $res["subindikator"]; 
 		$data['komponen'] = $res["komponen"]; 
+		$data['id_survei'] = $id_survei; 
+		$data['id_indikator'] = $id; 
+		$_SESSION['subindikator'] = $res["subindikator"]; 
+		$_SESSION['komponen'] = $res["komponen"]; 
          $this->load->view('template/head'); 
         $this->load->view('template/core_plugins'); 
         $this->load->view('survei/surveidetail', $data); 
+	}
+
+	public function read($id=1){	
+		header('Content-Type: application/json');
+		echo json_encode($this->Survei_model->get_by_id($id));
 	}
 
 	public function insert(){
@@ -73,8 +84,52 @@ class Survei extends CI_Controller {
 			'modifieddate' => date('Y-m-d H:i:s') , 
 			'createby' => $this->session->userdata('nama') , 
 			'unit' =>  $this->input->post('unit', TRUE),
+			'indikator_terakhir' =>  0,
 		); 
-		$this->Survei_model->insert($data); 
+		$id_survei = $this->Survei_model->insert($data); 
+		Redirect(base_url().'Survei/indikator/'.$id_survei.'/1', false);
+	}
+
+	public function insert_detail(){
+		$data_subindikator = $_SESSION['subindikator'];
+		$komponen = $_SESSION['komponen'];
+		foreach($data_subindikator as $data_subindikator_row){
+
+			$check_exist_survei = $this->Tindakan_model->get_by_survei($this->input->post('id_survei', TRUE), $data_subindikator_row->id);
+
+			if($check_exist_survei != null){
+				$data = array( 
+					'survei_id' => $this->input->post('id_survei', TRUE),
+					'subindikator_id' => $data_subindikator_row->id, 
+					'dilakukan' => $this->input->post('radio_'.$data_subindikator_row->id, TRUE), 
+					'modifieddate' => date('Y-m-d H:i:s') 
+				); 
+				$this->Tindakan_model->update($check_exist_survei->id, $data); 
+			}
+			else{
+				$data = array( 
+					'survei_id' => $this->input->post('id_survei', TRUE),
+					'subindikator_id' => $data_subindikator_row->id, 
+					'dilakukan' => $this->input->post('radio_'.$data_subindikator_row->id, TRUE), 
+					'modifieddate' => date('Y-m-d H:i:s') 
+				); 
+				$this->Tindakan_model->insert($data); 
+			}
+		}
+
+		
+		foreach($komponen as $komponen_row){
+			$data = array( 
+				'survei_id' => $this->input->post('id_survei', TRUE),
+				'komponen_id' => $komponen_row->id, 
+				'ketersediaan' => $this->input->post('sedia_'.$komponen_row->id, TRUE), 
+				'kesesuaian' => $this->input->post('sesuai_'.$komponen_row->id, TRUE), 
+				'modifieddate' => date('Y-m-d H:i:s') 
+			); 
+			$this->Dokpendukung_model->insert($data); 
+		}
+
+		Redirect(base_url().'Survei/indikator/'.$this->input->post('id_survei', TRUE).'/'.$this->input->post('id_indikator', TRUE), false);
 	}
  
     

@@ -88,7 +88,9 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                             <div class="portlet-body form">
                                 <!-- BEGIN FORM-->
-                                <form id="editform1" class="form-horizontal">
+                            <form id="editform1" class="form-horizontal" action="<?php echo base_url()?>Survei/insert_detail" method="post">
+                                <input type="hidden" id="id_indikator" name="id_indikator" value="<?php echo $id_indikator?>">
+                                <input type="hidden" id="id_survei" name="id_survei" value="<?php echo $id_survei?>">
                                 <div class="row margin-bottom-20">
                                         <div class="col-lg-4 col-md-6" >
                                             <div class="portlet light" style="background: aliceblue;">
@@ -130,6 +132,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             </div>
                                         </div>
                                     </div>
+                                    
                                     <div class="panel-group accordion scrollable" id="accordion1">
                                             <?php $start = 1;
                                             foreach($subindikator as $subindikator_row){?> 
@@ -146,11 +149,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <div class="col-md-6">
                                                                 <div class="mt-radio-inline">
                                                                     <label class="mt-radio">
-                                                                        <input type="radio" name="optionsRadios" id="optionsRadios4" value="option1" checked=""> Ya
+                                                                        <input type="radio" name="radio_<?php echo $subindikator_row->id?>" id="optionsRadios4" value="1" <?php if($subindikator_row->dilakukan ==1){?> checked <?php } ?>> Ya
                                                                         <span></span>
                                                                     </label>
                                                                     <label class="mt-radio">
-                                                                        <input type="radio" name="optionsRadios" id="optionsRadios5" value="option2"> Tidak
+                                                                        <input type="radio" name="radio_<?php echo $subindikator_row->id?>" id="optionsRadios5" value="0" <?php if($subindikator_row->dilakukan ==0){?> checked <?php } ?>> Tidak
                                                                         <span></span>
                                                                     </label>
                                                                 </div>
@@ -176,60 +179,39 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
-                                                                                <tr>
-                                                                                    <td> 1 </td>
-                                                                                    <td> Dok. Tracer studi </td>
-                                                                                    <td>
-                                                                                    <div class="mt-radio-inline">
-                                                                                            <label class="mt-radio">
-                                                                                                <input type="radio" name="options1" id="optionsRadios4" value="option1" checked=""> Ada
-                                                                                                <span></span>
-                                                                                            </label>
-                                                                                            <label class="mt-radio">
-                                                                                                <input type="radio" name="options1" id="optionsRadios5" value="option2"> Tidak
-                                                                                                <span></span>
-                                                                                            </label>
-                                                                                        </div> 
-                                                                                    </td>
-                                                                                    <td>  <div class="mt-radio-inline">
-                                                                                            <label class="mt-radio">
-                                                                                                <input type="radio" name="options2" id="optionsRadios4" value="option2" checked=""> iya
-                                                                                                <span></span>
-                                                                                            </label>
-                                                                                            <label class="mt-radio">
-                                                                                                <input type="radio" name="options2" id="optionsRadios5" value="option3"> Tidak
-                                                                                                <span></span>
-                                                                                            </label>
-                                                                                        </div> 
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td> 2 </td>
-                                                                                    <td> Dok. Riset Pasar </td>
-                                                                                    <td>
-                                                                                    <div class="mt-radio-inline">
-                                                                                            <label class="mt-radio">
-                                                                                                <input type="radio" name="options3" id="optionsRadios4" value="option4" checked=""> Ada
-                                                                                                <span></span>
-                                                                                            </label>
-                                                                                            <label class="mt-radio">
-                                                                                                <input type="radio" name="options3" id="optionsRadios5" value="option5"> Tidak
-                                                                                                <span></span>
-                                                                                            </label>
-                                                                                        </div> 
-                                                                                    </td>
-                                                                                    <td>  <div class="mt-radio-inline">
-                                                                                            <label class="mt-radio">
-                                                                                                <input type="radio" name="options4" id="optionsRadios4" value="option6" checked=""> iya
-                                                                                                <span></span>
-                                                                                            </label>
-                                                                                            <label class="mt-radio">
-                                                                                                <input type="radio" name="options5" id="optionsRadios5" value="option7"> Tidak
-                                                                                                <span></span>
-                                                                                            </label>
-                                                                                        </div> 
-                                                                                    </td>
-                                                                                </tr>
+                                                                                <?php 
+                                                                                    $startkomponen = 1;
+                                                                                    foreach($komponen as $komponen_row){
+                                                                                        if($komponen_row->subindikator_id == $subindikator_row->id){?> 
+                                                                                    <tr>
+                                                                                        <td> <?php echo $startkomponen ?></td>
+                                                                                        <td> <?php echo $komponen_row->jenis ?></td>
+                                                                                        <td>
+                                                                                        <div class="mt-radio-inline">
+                                                                                                <label class="mt-radio">
+                                                                                                    <input type="radio" name="sedia_<?php echo $komponen_row->id ?>" id="sedia_ada_<?php echo $komponen_row->id ?>" value="1" <?php if($komponen_row->ketersediaan ==1){?> checked <?php } ?>> Ada
+                                                                                                    <span></span>
+                                                                                                </label>
+                                                                                                <label class="mt-radio">
+                                                                                                    <input type="radio" name="sedia_<?php echo $komponen_row->id ?>" id="sedia_tidak_<?php echo $komponen_row->jenis ?>" value="0" <?php if($komponen_row->ketersediaan ==0){?> checked <?php } ?>> Tidak
+                                                                                                    <span></span>
+                                                                                                </label>
+                                                                                            </div> 
+                                                                                        </td>
+                                                                                        <td>  <div class="mt-radio-inline">
+                                                                                                <label class="mt-radio">
+                                                                                                    <input type="radio" name="sesuai_<?php echo $komponen_row->id ?>" id="sesuai_ya_<?php echo $komponen_row->id ?>" value="1" <?php if($komponen_row->kesesuaian ==1){?> checked <?php } ?>> iya
+                                                                                                    <span></span>
+                                                                                                </label>
+                                                                                                <label class="mt-radio">
+                                                                                                    <input type="radio" name="sesuai_<?php echo $komponen_row->id ?>" id="sesuai_tidak_<?php echo $komponen_row->id ?>" value="0" <?php if($komponen_row->kesesuaian ==0){?> checked <?php } ?>> Tidak
+                                                                                                    <span></span>
+                                                                                                </label>
+                                                                                            </div> 
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                <?php $startkomponen = $startkomponen + 1;}
+                                                                            } ?>
                                                                             </tbody>
                                                                         </table>
                                                                     </div>
@@ -252,7 +234,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <input class="btn green" type="submit" value="Save">
                                     <button type="button" class="btn blue"  id="next_body_detail" name="next_body_detail" >
                                         <i class="fa fa-angle-right"></i> Next</button>
-                                </div>
+                                    </div>
+                                
+                                </form>
 		</div>
         </div>
 	
