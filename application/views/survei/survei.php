@@ -95,13 +95,18 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                             <?php echo $survei->tanggal ?> 
                                                                         </td> 
                                                                         <td> 
-                                                                            <?php echo $survei->surveyor ?> 
+                                                                            <?php echo $survei->nama ?> 
                                                                         </td> 
                                                                         <td> 
-                                                                            <?php echo $survei->unit ?> 
+                                                                            <?php echo $survei->nama_unit ?> 
                                                                         </td>
                                                                         <td> 
-                                                                            <?php echo $survei->status ?> 
+                                                                            <?php   if($survei->status == 1){
+                                                                                        echo "Sedang Dikerjakan";
+                                                                                    } 
+                                                                                    else if($survei->status == 2){
+                                                                                        echo "Selesai";
+                                                                                    }?> 
                                                                         </td> 
                                                                     </tr> 
                                                                     <?php 
@@ -127,7 +132,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         </div>
                         <div class="portlet-body form">
                             <!-- BEGIN FORM-->
-                            <form id="editform1" class="form-horizontal">
+                            <form id="editform1" class="form-horizontal" action="Survei/insert" method="post">
                             <div class="panel panel-info">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">Info Surveyor</h3>
@@ -137,15 +142,24 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <label class="col-md-1 control-label">Tanggal Survei</label>
                                         <div class="col-md-11">
                                             <div class="input-icon right">
-                                                <i class="fa fa-microphone"></i>
-                                                <input class="form-control form-control-inline date-picker" size="16" type="text" value=""> </div>
+                                                <i class="fa fa-calendar"></i>
+                                                <input class="form-control form-control-inline date-picker" size="16" type="text" value="" name = "tanggal"> </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-1 control-label">Unit</label>
                                         <div class="col-md-11">
                                             <div class="input-icon right">
-                                                <select class="bs-select form-control" data-live-search="true" data-size="8">
+                                                <select class="bs-select form-control" data-live-search="true" data-size="8" id="unit" name="unit">
+                                                    <?php
+                                                        if($master_unit != null){
+                                                        foreach ($master_unit as $master_unit_row) 
+                                                            { 
+                                                                ?> 
+                                                                <option value="<?php echo $master_unit_row->kode_unit?>"><?php echo $master_unit_row->nama_unit ?></option>
+                                                                <?php 
+                                                            }
+                                                        } ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -154,16 +168,16 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <label class="col-md-1 control-label">Surveyor</label>
                                         <div class="col-md-11">
                                             <div class="input-icon right">
-                                                <i class="fa fa-microphone"></i>
-                                                <input type="text" class="form-control" placeholder="Right icon"> </div>
+                                                <i class="fa fa-user"></i>
+                                                <input type="text" class="form-control" placeholder="Right icon" name="surveyor" value = "<?php echo $surveyor ?>" disabled="true"> </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-1 control-label">Status</label>
                                         <div class="col-md-11">
                                             <div class="input-icon right">
-                                                <i class="fa fa-microphone"></i>
-                                                <input type="text" class="form-control" placeholder="Right icon" value="Dikerjakan"> </div>
+                                                <i class="fa fa-check"></i>
+                                                <input type="text" class="form-control" placeholder="Right icon" value="Dikerjakan" disabled="true"> </div>
                                         </div>
                                     </div>
                                     </div>

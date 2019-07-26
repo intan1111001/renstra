@@ -25,31 +25,31 @@ class Elemen_model extends CI_Model
  
     function get_by_id($id) 
         { 
-        $this->sifasum->where($this->id, $id); 
-        return $this->sifasum->get($this->table)->row(); 
+        $this->db->where($this->id, $id); 
+        return $this->db->get($this->table)->row(); 
         } 
  
     // insert data 
  
     function insert($data) 
         { 
-        $this->sifasum->insert($this->table, $data); 
+        $this->db->insert($this->table, $data); 
         } 
  
     // update data 
  
     function update($id, $data) 
         { 
-        $this->sifasum->where($this->id, $id); 
-        $this->sifasum->update($this->table, $data); 
+        $this->db->where($this->id, $id); 
+        $this->db->update($this->table, $data); 
         } 
  
     // delete data 
  
     function delete($id) 
         { 
-        $this->sifasum->where($this->id, $id); 
-        $this->sifasum->delete($this->table); 
+        $this->db->where($this->id, $id); 
+        $this->db->delete($this->table); 
         } 
 
     function getdatasurvei($id){
