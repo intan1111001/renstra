@@ -17,9 +17,20 @@ class Elemen_model extends CI_Model
  
     function get_all($filter = "") 
         { 
-            $this->db->order_by($this->id, $this->order); 
-            return $this->db->get($this->table)->result(); 
+            $strSql = 'select * FROM elemen WHERE isdelete = 0 order by id';
+            $query = $this->db->query($strSql);
+            $data = $query->result();
+            return $data;
         } 
+
+        
+    function get_id_indikator() 
+    { 
+        $strSql = 'select i.id  FROM elemen e LEFT JOIN indikator i ON e.id = i.elemen_id where e.isdelete = 0 and i.isdelete = 0 order by id';
+        $query = $this->db->query($strSql);
+        $data = $query->result_array();
+        return $data;
+    }
  
     // get data by id 
  

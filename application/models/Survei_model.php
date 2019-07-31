@@ -91,4 +91,14 @@ class Survei_model extends CI_Model
         $query = $this->db->query($sql);
         return $query->result();
     }
+
+    function updatelastindikator($id, $indikator){
+        $sql = "update survei set indikator_terakhir = $indikator, modifieddate= now() where id = $id";        
+        $query = $this->db->query($sql);
+    }
+
+    function submitsurvei($id){
+        $sql = "update survei set status = 2, modifieddate= now() where id = $id";        
+        $query = $this->db->query($sql);
+    }
     }

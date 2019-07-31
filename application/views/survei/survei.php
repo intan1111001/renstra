@@ -202,8 +202,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <button type="button" class="btn red"  id="close" name="close" onclick="javascript:tutup()" >
                                         <i class="fa fa-close"></i> Close</button>
                                     <input class="btn green" type="submit" value="Save">
-                                    <button type="button" class="btn blue"  id="next_body_detail" name="next_body_detail" >
-                                        <i class="fa fa-trash"></i> Next</button>
+                                    
                                 </div>
                             </form>
                             <!-- END FORM-->
@@ -232,9 +231,6 @@ License: You must have a valid license purchased only from themeforest(the above
                     document.getElementById("form_detail_header").style.display = "";
 				});
 
-                $('#next_body_detail').click(function(event) {
-                    window.location.href = "<?php echo base_url();?>Survei/indikator";
-                });
             });
                 
                 function edit(id){

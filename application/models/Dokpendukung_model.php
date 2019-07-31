@@ -55,7 +55,7 @@ class Dokpendukung_model extends CI_Model
     function get_by_survei($id,$indikator_id) 
         { 
         $this->db->where("survei_id", $id); 
-        $this->db->where("subindikator_id", $indikator_id); 
+        $this->db->where("komponen_id", $indikator_id); 
         return $this->db->get($this->table)->row(); 
         } 
 

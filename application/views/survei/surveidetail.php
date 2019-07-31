@@ -91,6 +91,8 @@ License: You must have a valid license purchased only from themeforest(the above
                             <form id="editform1" class="form-horizontal" action="<?php echo base_url()?>Survei/insert_detail" method="post">
                                 <input type="hidden" id="id_indikator" name="id_indikator" value="<?php echo $id_indikator?>">
                                 <input type="hidden" id="id_survei" name="id_survei" value="<?php echo $id_survei?>">
+                                <input type="hidden" id="id_next_indikator" name="id_next_indikator" value="<?php echo $id_next_indikator?>">
+                                <input type="hidden" id="id_back_indikator" name="id_back_indikator" value="<?php echo $id_back_indikator?>">
                                 <div class="row margin-bottom-20">
                                         <div class="col-lg-4 col-md-6" >
                                             <div class="portlet light" style="background: aliceblue;">
@@ -231,10 +233,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <i class="fa fa-close"></i> Close</button>
                                     <button type="button" class="btn blue"  id="back_body_detail" name="back_body_detail" >
                                         <i class="fa fa-angle-left"></i> Back</button>
-                                    <input class="btn green" type="submit" value="Save">
+                                        <input class="btn green" type="submit" value="Save">
+                                    <?php if($last_indikator == 0){?>                     
                                     <button type="button" class="btn blue"  id="next_body_detail" name="next_body_detail" >
                                         <i class="fa fa-angle-right"></i> Next</button>
                                     </div>
+                                    <?php }else{ ?><input type="button"  class="btn green" id="Finish" value="Finish"> <?php } ?>
                                 
                                 </form>
 		</div>
@@ -269,11 +273,15 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- END QUICK NAV -->
         <script>
                 $('#next_body_detail').click(function(event) {
-                    window.location.href = "<?php echo base_url();?>Survei/indikator";
+                    window.location.href = "<?php echo base_url();?>Survei/indikator/" + document.getElementById("id_survei").value +"/" + document.getElementById("id_next_indikator").value;
                 });
                 
                 $('#back_body_detail').click(function(event) {
-                    window.location.href = "<?php echo base_url();?>Survei/indikator";
+                    window.location.href = "<?php echo base_url();?>Survei/indikator/" + document.getElementById("id_survei").value +"/" + document.getElementById("id_back_indikator").value;
+				});
+
+                $('#Finish').click(function(event) {
+                    window.location.href = "<?php echo base_url();?>Survei/submit/" + document.getElementById("id_survei").value;
 				});
                 
                 $('#close').click(function(event) {
