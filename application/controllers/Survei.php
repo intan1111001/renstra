@@ -143,7 +143,7 @@ class Survei extends CI_Controller {
 		
 		foreach($komponen as $komponen_row){
 
-			$check_exist_survei = $this->Tindakan_model->get_by_survei($this->input->post('id_survei', TRUE), $komponen_row->id);
+			$check_exist_survei = $this->Dokpendukung_model->get_by_survei($this->input->post('id_survei', TRUE), $komponen_row->id);
 			if($check_exist_survei != null){
 				$data = array( 
 					'survei_id' => $this->input->post('id_survei', TRUE),

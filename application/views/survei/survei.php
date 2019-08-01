@@ -118,7 +118,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                       </button> <?php
                                                                                     } 
                                                                                     else if($survei->status == 2){
-                                                                                        ?> <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" onclick=""> Detail
+                                                                                        ?> <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" onclick="javascript:showdetail('<?php echo $survei->id ?>')"> Detail
                                                                                     </button>
                                                                                    <?php }?> 
                                                                         </td>
@@ -147,7 +147,8 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="portlet-body form">
                             <!-- BEGIN FORM-->
                             <form id="editform1" class="form-horizontal" action="Survei/insert" method="post">
-                            <div class="panel panel-info">
+                            <input type="hidden" id="id_survei" name="id_survei" value="">
+                                <div class="panel panel-info">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">Info Surveyor</h3>
                                 </div>
@@ -157,7 +158,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <div class="col-md-11">
                                             <div class="input-icon right">
                                                 <i class="fa fa-calendar"></i>
-                                                <input class="form-control form-control-inline date-picker" size="16" type="text" value="" name = "tanggal"> </div>
+                                                <input class="form-control form-control-inline date-picker" size="16" type="text" value="" id = "tanggal" name = "tanggal"> </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -201,8 +202,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                     
                                     <button type="button" class="btn red"  id="close" name="close" onclick="javascript:tutup()" >
                                         <i class="fa fa-close"></i> Close</button>
-                                    <input class="btn green" type="submit" value="Save">
-                                    
+                                    <input class="btn green" type="submit" value="Save" id="save">
+                                    <button type="button" class="btn blue"  id="next" name="next" onclick="javascript:edit()" >
+                                        <i class="fa fa-angle-right"></i> Next</button>
                                 </div>
                             </form>
                             <!-- END FORM-->
@@ -229,14 +231,36 @@ License: You must have a valid license purchased only from themeforest(the above
                 $('#add_survei').click(function(event) {
                     document.getElementById("list_survei").style.display = "none";
                     document.getElementById("form_detail_header").style.display = "";
+                    document.getElementById("tanggal").disabled = false;
+                    document.getElementById("unit").disabled = false;                    
+                    document.getElementById("tanggal").value = '';                      
+                    document.getElementById("unit").value = '';
+                    document.getElementById("save").style.display = "";
+                    document.getElementById("next").style.display = "none";
 				});
 
             });
                 
                 function edit(id){
-
+                    if(id == null){
+                        id = document.getElementById("id_survei").value;
+                    }
                     $.get("<?php echo base_url();?>Survei/read/"+id, function( data ) {
                         window.location.href = "<?php echo base_url();?>Survei/indikator/"+ data["id"] +"/"+ (parseInt(data["indikator_terakhir"])+1);
+                    });
+                }
+
+                function showdetail(id){
+                    document.getElementById("list_survei").style.display = "none";
+                    document.getElementById("form_detail_header").style.display = "";
+                    $.get("<?php echo base_url();?>Survei/read/"+id, function( data ) {                        
+                    document.getElementById("tanggal").value = data["tanggal"];                      
+                    document.getElementById("unit").value = data["unit"];                     
+                    document.getElementById("id_survei").value = data["id"];
+                    document.getElementById("tanggal").disabled = "true";
+                    document.getElementById("unit").disabled = "true";
+                    document.getElementById("save").style.display = "none";
+                    document.getElementById("next").style.display = "";
                     });
                 }
 
