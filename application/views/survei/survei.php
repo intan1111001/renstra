@@ -203,7 +203,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <button type="button" class="btn red"  id="close" name="close" onclick="javascript:tutup()" >
                                         <i class="fa fa-close"></i> Close</button>
                                     <input class="btn green" type="submit" value="Save" id="save">
-                                    <button type="button" class="btn blue"  id="next" name="next" onclick="javascript:edit()" >
+                                    <button type="button" class="btn blue"  id="next" name="next" onclick="javascript:next_button()" >
                                         <i class="fa fa-angle-right"></i> Next</button>
                                 </div>
                             </form>
@@ -246,7 +246,16 @@ License: You must have a valid license purchased only from themeforest(the above
                         id = document.getElementById("id_survei").value;
                     }
                     $.get("<?php echo base_url();?>Survei/read/"+id, function( data ) {
-                        window.location.href = "<?php echo base_url();?>Survei/indikator/"+ data["id"] +"/"+ (parseInt(data["indikator_terakhir"])+1);
+                        window.location.href = "<?php echo base_url();?>Survei/indikator/"+ data["id"] +"/"+ (parseInt(data["indikator_terakhir"])+1)+"/"+ (parseInt(data["status"]));
+                    });
+                }
+
+                function next_button(id){
+                    if(id == null){
+                        id = document.getElementById("id_survei").value;
+                    }
+                    $.get("<?php echo base_url();?>Survei/read/"+id, function( data ) {
+                        window.location.href = "<?php echo base_url();?>Survei/indikator/"+ data["id"] +"/"+ (parseInt(data["indikator_terakhir"]))+"/"+ (parseInt(data["status"]));
                     });
                 }
 

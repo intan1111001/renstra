@@ -54,7 +54,7 @@ class Survei extends CI_Controller {
         $this->load->view('survei/survei', $data); 
         } 
  
-	public function indikator($id_survei = null,$id = null){
+	public function indikator($id_survei = null,$id = null, $finish = 0){
 		if($id_survei == null){
 			$id_survei = $_SESSION["id_survei"];
 		}
@@ -68,18 +68,25 @@ class Survei extends CI_Controller {
 		$data['id_survei'] = $id_survei; 
 		$data['id_indikator'] = $id; 
 		$data['last_indikator'] = 0; 
+		$data['finish'] = $finish; 
 		$_SESSION['subindikator'] = $res["subindikator"]; 
 		$_SESSION['komponen'] = $res["komponen"]; 
 		$list_indikator = $this->Elemen_model->get_id_indikator();
 		$array_indikator_lenght = sizeof($list_indikator);
 		$array_id = (array_search($id, array_column($list_indikator,'id')));
-		if($array_id == 0){
-			$data['id_back_indikator'] = $list_indikator[0]["id"]; 
-			$data['id_next_indikator'] = $list_indikator[$array_id+1]["id"]; 
-		}else if($array_id == $array_indikator_lenght-1){
+		if(($array_id == $array_indikator_lenght-1 ) and ($array_id != 0)){
 			$data['id_back_indikator'] = $list_indikator[$array_id-1]["id"]; 
 			$data['id_next_indikator'] = $list_indikator[$array_id]["id"]; 
 			$data['last_indikator'] = 1; 
+		}
+		else if(($array_id == $array_indikator_lenght-1) and ($array_id == 0)){
+			$data['id_back_indikator'] = $list_indikator[0]["id"]; 
+			$data['id_next_indikator'] = $list_indikator[0]["id"]; 
+			$data['last_indikator'] = 1; 
+		}
+		else if($array_id == 0){
+			$data['id_back_indikator'] = $list_indikator[0]["id"]; 
+			$data['id_next_indikator'] = $list_indikator[$array_id+1]["id"]; 
 		}
 		else{
 			$data['id_back_indikator'] = $list_indikator[$array_id-1]["id"]; 

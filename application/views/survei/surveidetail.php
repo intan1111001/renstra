@@ -233,12 +233,18 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <i class="fa fa-close"></i> Close</button>
                                     <button type="button" class="btn blue"  id="back_body_detail" name="back_body_detail" >
                                         <i class="fa fa-angle-left"></i> Back</button>
-                                        <input class="btn green" type="submit" value="Save">
+                                    <?php if($finish == 0){?>    
+                                        <input class="btn green" type="submit" value="Save"> 
+                                    <?php }?>
                                     <?php if($last_indikator == 0){?>                     
-                                    <button type="button" class="btn blue"  id="next_body_detail" name="next_body_detail" >
-                                        <i class="fa fa-angle-right"></i> Next</button>
-                                    </div>
-                                    <?php }else{ ?><input type="button"  class="btn green" id="Finish" value="Finish"> <?php } ?>
+                                        <button type="button" class="btn blue"  id="next_body_detail" name="next_body_detail" >
+                                            <i class="fa fa-angle-right"></i> Next</button>
+                                        </div>
+                                    <?php }else{ ?>
+                                        <?php if($finish == 0){?> 
+                                        <input type="button"  class="btn green" id="Finish" value="Finish"> 
+                                        <?php }
+                                        } ?>
                                 
                                 </form>
 		</div>
@@ -273,11 +279,11 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- END QUICK NAV -->
         <script>
                 $('#next_body_detail').click(function(event) {
-                    window.location.href = "<?php echo base_url();?>Survei/indikator/" + document.getElementById("id_survei").value +"/" + document.getElementById("id_next_indikator").value;
+                    window.location.href = "<?php echo base_url();?>Survei/indikator/" + document.getElementById("id_survei").value +"/" + document.getElementById("id_next_indikator").value +"/" + <?php echo $finish ?>;
                 });
                 
                 $('#back_body_detail').click(function(event) {
-                    window.location.href = "<?php echo base_url();?>Survei/indikator/" + document.getElementById("id_survei").value +"/" + document.getElementById("id_back_indikator").value;
+                    window.location.href = "<?php echo base_url();?>Survei/indikator/" + document.getElementById("id_survei").value +"/" + document.getElementById("id_back_indikator").value+"/" + <?php echo $finish ?>;
 				});
 
                 $('#Finish').click(function(event) {
