@@ -52,9 +52,9 @@ License: You must have a valid license purchased only from themeforest(the above
     <?php $this->load->view('template/header'); ?>
         <!-- BEGIN CONTAINER -->
         <div class="page-container">
-            <?php $this->load->view('template/sidebar'); ?>
+            <?php //$this->load->view('template/sidebar'); ?>
             <!-- BEGIN CONTENT -->
-            <div class="page-content-wrapper">
+            <div class="page-content">
                 <!-- BEGIN CONTENT BODY -->
                     <div class="page-content"  >
                     <!-- BEGIN PAGE HEAD-->

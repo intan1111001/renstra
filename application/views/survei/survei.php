@@ -26,9 +26,9 @@ License: You must have a valid license purchased only from themeforest(the above
     <?php $this->load->view('template/header'); ?>
         <!-- BEGIN CONTAINER -->
         <div class="page-container">
-            <?php $this->load->view('template/sidebar'); ?>
+            <?php //$this->load->view('template/sidebar'); ?>
             <!-- BEGIN CONTENT -->
-            <div class="page-content-wrapper">
+            <div class="page-content">
                 <!-- BEGIN CONTENT BODY -->
                     <div class="page-content"  >
                     <!-- BEGIN PAGE HEAD-->
@@ -114,7 +114,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                                                         <?php   if($survei->status == 1){
                                                                                       ?> 
-                                                                                      <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" onclick="javascript:edit('<?php echo $survei->id ?>')"> Resume
+                                                                                      <button class="btn btn-xs yellow dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" onclick="javascript:edit('<?php echo $survei->id ?>')"> Resume
                                                                                       </button> <?php
                                                                                     } 
                                                                                     else if($survei->status == 2){
