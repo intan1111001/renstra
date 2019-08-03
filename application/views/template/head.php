@@ -8,7 +8,7 @@
         <meta content="Preview page of Metronic Admin Theme #4 for edit product" name="description" />
         <meta content="" name="author" />
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
-
+        <link href="<?php echo base_url()."assets/"; ?>/select2/css/select2.min.css" rel="stylesheet" />
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url()."assets/"; ?>theme/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url()."assets/"; ?>theme/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
