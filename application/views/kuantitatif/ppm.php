@@ -37,7 +37,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				<div class="page-head">
 					<!-- BEGIN PAGE TITLE -->
 					<div class="page-title">
-						<h1>Mahasiswa
+						<h1> Program Pengabdian pada Masyarakat
 							<small>indikator 1.1</small>
 						</h1>
 					</div>
@@ -60,8 +60,8 @@ License: You must have a valid license purchased only from themeforest(the above
 					<div class="portlet light bordered">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-user"></i>
-								<span class="caption-subject font-blue-hoki bold uppercase">Form Mahasiswa</span>
+								<i class="fa fa-line-chart"></i>
+								<span class="caption-subject font-blue-hoki bold uppercase">Form Program Pengabdian pada Masyarakat</span>
 							</div>
 						</div>
 						<div class="portlet-body form">
@@ -86,149 +86,52 @@ License: You must have a valid license purchased only from themeforest(the above
 										</div>
 
 										<div class="form-group">
-											<label class="col-md-4 control-label">Daya Tampung Pendaftaran</label>
+											<label class="col-md-4 control-label">Tipe PPM</label>
+											<div class="col-md-8">
+												<div class="input-icon right">
+													<i class="fa fa-microscope"></i>
+													<select id='tipe' class="form-control" placeholder="Masukkan Jenis PPM" name="tipe">
+													<option value="1" >Penelitian</option>
+														<option value="2">PKM</option>
+														<option value="3">Publikasi</option>
+													</select>
+												</div>
+											</div>
+										</div>
+
+
+										
+										<div class="form-group">
+											<label class="col-md-4 control-label">Jumlah PPM</label>
 											<div class="col-md-8">
 												<div class="input-icon right">
 													<i class="fa fa-users"></i>
-													<input type='number' class="form-control" placeholder="Masukkan Daya Tampung Pendaftaran" name="reg_dayatampung">
+													<input type='number' class="form-control" placeholder="Masukkan Jumlah PPM" name="jumlah">
 												</div>
 											</div>
 										</div>
 
 
 										<div class="form-group">
-											<label class="col-md-4 control-label">Jumlah Pendaftar</label>
+											<label class="col-md-4 control-label">Sumber Pembiayaan </label>
 											<div class="col-md-8">
 												<div class="input-icon right">
-													<i class="fa fa-users"></i>
-													<input type='number' class="form-control" placeholder="Masukkan Jumlah Pendaftar" name="reg_pendaftar">
+													<i class="fa fa-handshake"></i>
+													<input type='text' class="form-control" placeholder="Masukkan Sumber Pembiayaan" name="jenis">
 												</div>
 											</div>
 										</div>
 
 										<div class="form-group">
-											<label class="col-md-4 control-label">Jumlah Lulus Seleksi Pendaftaran</label>
+											<label class="col-md-4 control-label">Subyek PPM</label>
 											<div class="col-md-8">
 												<div class="input-icon right">
-													<i class="fa fa-users"></i>
-													<input type='number' class="form-control" placeholder="Masukkan  Jumlah Lulus Seleksi Pendaftaran" name="reg_lulus">
-												</div>
-											</div>
-										</div>
-
-										<div class="form-group">
-											<label class="col-md-4 control-label">Jumlah Mahasiswa Baru</label>
-											<div class="col-md-8">
-												<div class="input-icon right">
-													<i class="fa fa-user-plus"></i>
-													<input type='number' class="form-control" placeholder="Masukkan Jumlah Mahasiswa Baru" name="mhs_baru">
-												</div>
-											</div>
-										</div>
-
-
-										<div class="form-group">
-											<label class="col-md-4 control-label">Jumlah Mahasiswa Asing Full Time</label>
-											<div class="col-md-8">
-												<div class="input-icon right">
-													<i class="fa fa-globe"></i>
-													<input type='number' class="form-control" placeholder="Masukkan Jumlah Mahasiswa Asing Full Time" name="mhs_asing_full">
-												</div>
-											</div>
-										</div>
-
-										<div class="form-group">
-											<label class="col-md-4 control-label">Jumlah Mahasiswa Asing Part Time</label>
-											<div class="col-md-8">
-												<div class="input-icon right">
-													<i class="fa fa-globe"></i>
-													<input type='number' class="form-control" placeholder="Masukkan Jumlah Mahasiswa Asing Part Time" name="mhs_asing_paruh">
-												</div>
-											</div>
-										</div>
-
-									</div>
-
-									<div class="col-md-6">
-
-
-										<div class="form-group">
-											<label class="col-md-4 control-label">Jumlah Mahasiswa Lulus</label>
-											<div class="col-md-8">
-												<div class="input-icon right">
-													<i class="fa fa-graduation-cap"></i>
-													<input type='number' class="form-control" placeholder="Masukkan Jumlah Mahasiswa Lulus" name="lulus_mhs">
-												</div>
-											</div>
-										</div>
-
-
-										<div class="form-group">
-											<label class="col-md-4 control-label">IPK Minimum</label>
-											<div class="col-md-8">
-												<div class="input-icon right">
-													<i class="fa fa-graduation-cap"></i>
-													<input type='number' class="form-control" placeholder="Masukkan IPK Minimum" name="lulus_minipk">
-												</div>
-											</div>
-										</div>
-
-
-										<div class="form-group">
-											<label class="col-md-4 control-label">IPK Rata-Rata</label>
-											<div class="col-md-8">
-												<div class="input-icon right">
-													<i class="fa fa-graduation-cap"></i>
-													<input type='number' class="form-control" placeholder="Masukkan IPK Rata-Rata" name="lulus_rataipk">
-												</div>
-											</div>
-										</div>
-
-
-										<div class="form-group">
-											<label class="col-md-4 control-label">IPK Maksimum</label>
-											<div class="col-md-8">
-												<div class="input-icon right">
-													<i class="fa fa-graduation-cap"></i>
-													<input type='number' class="form-control" placeholder="Masukkan IPK Maksimum" name="lulus_maxipk">
-												</div>
-											</div>
-										</div>
-
-
-
-										<div class="form-group">
-											<label class="col-md-4 control-label">Lulusan Terlacak</label>
-											<div class="col-md-8">
-												<div class="input-icon right">
-													<i class="fa fa-graduation-cap"></i>
-													<input type='number' class="form-control" placeholder="Masukkan Lulusan Terlacak" name="lulus_terlacak">
-												</div>
-											</div>
-										</div>
-
-
-
-										<div class="form-group">
-											<label class="col-md-4 control-label">Lulusan Tunggu</label>
-											<div class="col-md-8">
-												<div class="input-icon right">
-													<i class="fa fa-graduation-cap"></i>
-													<input type='number' class="form-control" placeholder="Masukkan Lulusan Tunggu" name="lulus_tunggu">
-												</div>
-											</div>
-										</div>
-
-
-
-
-										<div class="form-group">
-											<label class="col-md-4 control-label">Lulusan Sesuai</label>
-											<div class="col-md-8">
-												<div class="input-icon right">
-													<i class="fa fa-graduation-cap"></i>
-													<input type='number' class="form-control" placeholder="Masukkan Lulusan Sesuai " name="lulus_sesuai">
-												</div>
+												
+												<select id='subjek' class="form-control" placeholder="Masukkan  Subyek PPM" name="subjek">
+												<option value="1" >Dosen</option>
+														<option value="2">Mahasiswa</option>
+														
+													</select>
 											</div>
 										</div>
 									</div>
@@ -267,8 +170,8 @@ License: You must have a valid license purchased only from themeforest(the above
 		<div class="portlet light bordered">
 			<div class="portlet-title">
 				<div class="caption">
-					<i class="fa fa-users"></i>
-					<span class="caption-subject font-blue-hoki bold uppercase">Mahasiswa</span>
+					<i class="fa fa-line-chart"></i>
+					<span class="caption-subject font-blue-hoki bold uppercase">Program Pengabdian pada Masyarakat</span>
 				</div>
 			</div>
 
@@ -278,21 +181,12 @@ License: You must have a valid license purchased only from themeforest(the above
 					<thead>
 						<tr>
 							<th> Tahun </th>
-							<th> Daya Tampung Pendaftaran </th>
-							<th> Jumlah Pendaftar </th>
-							<th> Jumlah Lulus Seleksi Pendaftaran </th>
-							<th> Jumlah Mahasiswa Baru </th>
-							<th> Jumlah Mahasiswa Aktif </th>
-							<th> Jumlah Mahasiswa Asing Full Time </th>
-							<th> Jumlah Mahasiswa Asing Part Time </th>
-							<th> Jumlah Mahasiswa Lulus </th>
-							<th> IPK Minimum </th>
-							<th> IPK Rata-Rata </th>
-							<th> IPK Maksimum </th>
-							<th> Lulusan Terlacak </th>
-							<th> Lulusan Tunggu </th>
-							<th> Lulusan Sesuai </th>
-							<th> Aksi </th>
+							<th> Tipe PPM </th>
+							<th> Jumlah </th>
+
+							<th> Sumber Pembiayaan </th>
+							<th> Subyek PPM </th>
+							<th>Aksi</th>
 
 						</tr>
 					</thead>
@@ -304,20 +198,11 @@ License: You must have a valid license purchased only from themeforest(the above
 							<tr>
 
 								<td><?= $model->tahun ?></td>
-								<td><?= $model->reg_dayatampung ?></td>
-								<td><?= $model->reg_pendaftar ?></td>
-								<td><?= $model->reg_lulus ?></td>
-								<td><?= $model->mhs_baru ?></td>
-								<td><?= $model->mhs_aktif ?></td>
-								<td><?= $model->mhs_asing_full ?></td>
-								<td><?= $model->mhs_asing_paruh ?></td>
-								<td><?= $model->lulus_mhs ?></td>
-								<td><?= $model->lulus_minipk ?></td>
-								<td><?= $model->lulus_rataipk ?></td>
-								<td><?= $model->lulus_maxipk ?></td>
-								<td><?= $model->lulus_terlacak ?></td>
-								<td><?= $model->lulus_tunggu ?></td>
-								<td><?= $model->lulus_sesuai ?></td>
+								<td><?= $model->tipe==1?'Penelitian' : ($model->tipe==2?'PKM' : 'Publikasi')  ?></td>
+								<td><?= $model->jumlah ?></td>
+								<td><?= $model->jenis ?></td>
+								<td><?= $model->subjek==1?'Dosen' :'Mahasiswa' ?></td>
+
 								<td>
 									<button class="btn blue" href="koreksi?id=<?= $model->id ?>" id="btn_koreksi" onclick="
             	$.getJSON('get?id=<?= $model->id ?>',
@@ -325,9 +210,9 @@ License: You must have a valid license purchased only from themeforest(the above
                	$.each(data, function (index, value) {
                	$.each(value, function (i, v) {
                    	$('input[name='+i+']').val(v);
-                   	if(i=='tahun'){
-                       	$('#tahun option[value='+v+']').attr('selected','selected');
-                   	}
+                   	
+                       	$('#'+i+' option[value='+v+']').attr('selected','selected');
+                   	
 
     	});
     	});

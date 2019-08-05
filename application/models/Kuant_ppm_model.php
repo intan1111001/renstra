@@ -1,7 +1,10 @@
 <?php
-class Survei_model extends CI_Model
+
+defined('BASEPATH') or exit('No direct script access allowed');
+
+class Kuant_ppm_model extends CI_Model
 {
-    public $table = 'survei';
+    public $table = 'kuant_ppm';
 
     public $id = 'id';
 
@@ -10,7 +13,6 @@ class Survei_model extends CI_Model
     public function __construct()
     {
         parent::__construct();
-        $this->simpeg = $this->load->database('simpeg', true);
     }
 
     // get all
@@ -27,7 +29,7 @@ class Survei_model extends CI_Model
     public function get_by_id($id)
     {
         $this->db->where($this->id, $id);
-        return $this->db->get($this->table)->row();
+        return $this->db->get($this->table)->result_array();
     }
 
     // insert data
@@ -63,36 +65,6 @@ class Survei_model extends CI_Model
         return $query->result();
     }
 
-    public function get_pegawai($id, $id_unit='', $filter='')
-    {
-        $sql = " SELECT nip,nama, if(s.id_usergroup = 10, 'superadmin', if(t.keterangan = 'Dosen', 'Dosen', 'Pegawai')) as jabatan,
-        p.id_unitkerja , u.nama_unit, p.id_jastruk, j.nama_jastruk, p.email, p.id_tugastambahan, p.id_unittugastambahan
-        FROM simpeg_0511.tbpegawai p inner join simpeg_0511.m_tipe t on p.id_tipe = t.id
-        inner join simpeg_0511.m_unit u on p.id_unitkerja = u.id
-        LEFT JOIN simpeg_0511.m_jastruk j ON p.id_jastruk = j.id
-        inner join simpeg_0511.tbsimpeguser s on s.id_pegawai = p.id ";
-
-        if ($id != null) {
-            $sql = $sql." Where nip= '$id'";
-        } elseif ($id_unit != '' && $id_unit != null) {
-            $sql = $sql." Where id_unitkerja= '".$id_unit."' or id_unittugastambahan= '".$id_unit."' ";
-        } elseif ($filter != '' && $filter != null) {
-            $sql = $sql.$filter;
-        }
-
-        $query = $this->db->query($sql);
-        return $query->result();
-    }
-
-    public function get_all_survey($id)
-    {
-        $sql = "select s.*,t.nama, nama_unit FROM rsb.survei s
-        INNER JOIN simpeg_0511.tbpegawai t ON s.surveyor = t.nip
-        INNER JOIN simpeg_0511.m_unit u ON s.unit = u.kode_unit
-        WHERE s.surveyor = '$id'";
-        $query = $this->db->query($sql);
-        return $query->result();
-    }
 
     public function updatelastindikator($id, $indikator)
     {
@@ -106,3 +78,5 @@ class Survei_model extends CI_Model
         $query = $this->db->query($sql);
     }
 }
+
+/* End of file Kuant_ppm.php */
