@@ -52,32 +52,60 @@ class Kuant_dosen extends CI_Controller {
 	}
 
     public function insert(){
-        // print_r($this->input->post('jabatan', TRUE));
-        // die();
-		$data = array( 
-			'pegawai' => $this->input->post('pegawai', TRUE),
-			'unit' => $this->input->post('unit', TRUE), 
-			'tahun' => $this->input->post('tahun', TRUE), 
-			's2' => $this->input->post('s2', TRUE), 
-			's3' => $this->input->post('s3', TRUE) , 
-			'keahlian' =>  $this->input->post('keahlian', TRUE),
-			'jabatan' =>  $this->input->post('jabatan', TRUE),
-			'serdos' =>  $this->input->post('serdos', TRUE),
-			'sertifikat' =>  $this->input->post('sertifikat', TRUE),
-			'mk_diampu_ps' =>  $this->input->post('mk_diampu_ps', TRUE),
-			'mk_diampu_nonps' =>  $this->input->post('mk_diampu_nonps', TRUE),
-			'pendidikan' =>  $this->input->post('pendidikan', TRUE),
-			'penelitian' =>  $this->input->post('penelitian', TRUE),
-			'pengabdian' =>  $this->input->post('pengabdian', TRUE),
-			'tugastambahan' =>  $this->input->post('tugastambahan', TRUE),
-			'status' =>  $this->input->post('status', TRUE),
-			'artikel' =>  $this->input->post('artikel', TRUE),
-			'sitasi' =>  $this->input->post('sitasi', TRUE),
-		); 
-		$id = $this->Kuantdosen_model->insert($data); 
+		$id = $this->input->post('id', TRUE);
+		if($id == null && $id == ''){
+			$data = array( 
+				'pegawai' => $this->input->post('pegawai', TRUE),
+				'unit' => $this->input->post('unit', TRUE), 
+				'tahun' => $this->input->post('tahun', TRUE), 
+				's2' => $this->input->post('s2', TRUE), 
+				's3' => $this->input->post('s3', TRUE) , 
+				'keahlian' =>  $this->input->post('keahlian', TRUE),
+				'jabatan' =>  $this->input->post('jabatan', TRUE),
+				'serdos' =>  $this->input->post('serdos', TRUE),
+				'sertifikat' =>  $this->input->post('sertifikat', TRUE),
+				'mk_diampu_ps' =>  $this->input->post('mk_diampu_ps', TRUE),
+				'mk_diampu_nonps' =>  $this->input->post('mk_diampu_nonps', TRUE),
+				'pendidikan' =>  $this->input->post('pendidikan', TRUE),
+				'penelitian' =>  $this->input->post('penelitian', TRUE),
+				'pengabdian' =>  $this->input->post('pengabdian', TRUE),
+				'tugastambahan' =>  $this->input->post('tugastambahan', TRUE),
+				'status' =>  $this->input->post('status', TRUE),
+				'artikel' =>  $this->input->post('artikel', TRUE),
+				'sitasi' =>  $this->input->post('sitasi', TRUE),
+			); 
+			$id = $this->Kuantdosen_model->insert($data); 
+		}else{
+			$data = array( 
+				'pegawai' => $this->input->post('pegawai', TRUE),
+				'unit' => $this->input->post('unit', TRUE), 
+				'tahun' => $this->input->post('tahun', TRUE), 
+				's2' => $this->input->post('s2', TRUE), 
+				's3' => $this->input->post('s3', TRUE) , 
+				'keahlian' =>  $this->input->post('keahlian', TRUE),
+				'jabatan' =>  $this->input->post('jabatan', TRUE),
+				'serdos' =>  $this->input->post('serdos', TRUE),
+				'sertifikat' =>  $this->input->post('sertifikat', TRUE),
+				'mk_diampu_ps' =>  $this->input->post('mk_diampu_ps', TRUE),
+				'mk_diampu_nonps' =>  $this->input->post('mk_diampu_nonps', TRUE),
+				'pendidikan' =>  $this->input->post('pendidikan', TRUE),
+				'penelitian' =>  $this->input->post('penelitian', TRUE),
+				'pengabdian' =>  $this->input->post('pengabdian', TRUE),
+				'tugastambahan' =>  $this->input->post('tugastambahan', TRUE),
+				'status' =>  $this->input->post('status', TRUE),
+				'artikel' =>  $this->input->post('artikel', TRUE),
+				'sitasi' =>  $this->input->post('sitasi', TRUE),
+			); 
+			$id = $this->Kuantdosen_model->update($id,$data); 
+		}
 		Redirect(base_url().'Kuant_dosen/', false);
 	}
  
+	function delete($id) 
+	{ 
+		$this->Kuantdosen_model->delete($id); 
+		Redirect(base_url().'Kuant_dosen/', false);
+	} 
     
 }
 

@@ -72,7 +72,7 @@ class Survei_model extends CI_Model
         LEFT JOIN simpeg_0511.m_jastruk j ON p.id_jastruk = j.id
         inner join simpeg_0511.tbsimpeguser s on s.id_pegawai = p.id ";
 
-        if ($id != null)
+        if ($id != null){
             $sql = $sql." Where nip= '$id'";
         } elseif ($id_unit != '' && $id_unit != null) {
             $sql = $sql." Where id_unitkerja= '".$id_unit."' or id_unittugastambahan= '".$id_unit."' ";

@@ -64,7 +64,8 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                             <div class="portlet-body form">
                                 <!-- BEGIN FORM-->
-                                <form id="editform1" class="form-horizontal" method = "post" action="insert">
+                                <form id="editform1" class="form-horizontal" method = "post" action="kuant_dosen/insert">
+                                <input type="hidden" id="id" name="id" value=""/>
 
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Pegawai</label>
@@ -181,10 +182,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn green"  id="next_body_detail" name="next_body_detail" >
-                                            <i class="fa fa-plus"></i> Tambah</button>
-                                        <button type="button" class="btn red"  id="next_body_detail" name="next_body_detail" >
-                                            <i class="fa fa-trash"></i> Hapus</button>
+                                        <button type="submit" class="btn green"  id="simpan" name="simpan" >
+                                            <i class="fa fa-plus"></i> Simpan</button>
+                                        <button type="button" class="btn red"  id="reset" name="reset" >
+                                            <i class="fa fa-trash"></i> Reset</button>
                                     </div>
                                 </form>
                                 <!-- END FORM-->
@@ -234,7 +235,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                     ?> 
                                                                     <tr> 
                                                                         <td >
-                                                                            <button class="btn btn-xs yellow dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" onclick="javascript:showdetail('<?php echo $dosen->id ?>')"> Edit
+                                                                            <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" onclick="javascript:showdetail('<?php echo $dosen->id ?>')"> Edit
+                                                                            </button> 
+                                                                            <button class="btn btn-xs red dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" onclick="javascript:hapus('<?php echo $dosen->id ?>')"> Hapus
                                                                             </button> 
                                                                         </td>
                                                                         <td> 
@@ -315,10 +318,32 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- END QUICK NAV -->
         <script>
             $(document).ready(function() {
-                $(".combo").select2({
-                    allowClear: true,
-                    width: "resolve"
-                });
+                // $(".combo").select2({
+                //     allowClear: true,
+                //     width: "resolve"
+                // });
+
+                $('#reset').click(function(event) {
+                    document.getElementById("id").value = "";                        
+                    document.getElementById("pegawai").value = "";                      
+                    document.getElementById("unit").value = "";                     
+                    document.getElementById("tahun").value = "";
+                    document.getElementById("s2").value = "";
+                    document.getElementById("s3").value = "";
+                    document.getElementById("keahlian").value = "";
+                    document.getElementById("jabatan").value = "";
+                    document.getElementById("serdos").value = "";
+                    document.getElementById("sertifikat").value = "";
+                    document.getElementById("mk_diampu_ps").value = "";
+                    document.getElementById("mk_diampu_nonps").value = "";
+                    document.getElementById("pendidikan").value = "";
+                    document.getElementById("penelitian").value = "";
+                    document.getElementById("pengabdian").value = "";
+                    document.getElementById("tugastambahan").value = "";
+                    document.getElementById("artikel").value = "";
+                    document.getElementById("sitasi").value = "";
+				});
+
                 });
 
                 function show_detail_pegawai(){
@@ -327,8 +352,15 @@ License: You must have a valid license purchased only from themeforest(the above
                     });
                 }
 
+                function hapus(id){
+                    $.get("<?php echo base_url();?>Kuant_dosen/delete/"+id, function( data ) {
+                            location.reload();
+                    });
+                }
+
                 function showdetail(id){
-                    $.get("<?php echo base_url();?>Kuant_dosen/read/"+id, function( data ) {               
+                    $.get("<?php echo base_url();?>Kuant_dosen/read/"+id, function( data ) {            
+                    document.getElementById("id").value = data["id"];                        
                     document.getElementById("pegawai").value = data["pegawai"];                      
                     document.getElementById("unit").value = data["unit"];                     
                     document.getElementById("tahun").value = data["tahun"];
