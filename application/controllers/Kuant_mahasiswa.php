@@ -51,8 +51,7 @@ class Kuant_mahasiswa extends CI_Controller
       $id=$this->input->post('id');
        if(!isset($id) || $id=="")
        {
-          echo $id;
-          die();
+     
          $this->Kuant_mahasiswa_model->insert($data);
        } else {
          $this->Kuant_mahasiswa_model->update($id,$data);
