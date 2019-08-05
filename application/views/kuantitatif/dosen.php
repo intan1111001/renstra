@@ -64,7 +64,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                             <div class="portlet-body form">
                                 <!-- BEGIN FORM-->
-                                <form id="editform1" class="form-horizontal" method = "post" action="kuant_dosen/insert">
+                                <form id="editform1" class="form-horizontal" method = "post" action="<?php echo base_url()?>kuant_dosen/insert">
                                 <input type="hidden" id="id" name="id" value=""/>
 
                                     <div class="form-group">

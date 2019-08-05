@@ -27,7 +27,7 @@ class Kuant_dosen extends CI_Controller {
     { 
 	    parent::__construct(); 
 	    $this->load->model('Survei_model'); 
-	    $this->load->model('Kuantdosen_model'); 
+	    $this->load->model('Kuant_dosen_model'); 
 	    $this->load->model('Pegawai_model'); 
     } 
  
@@ -35,7 +35,7 @@ class Kuant_dosen extends CI_Controller {
     { 
         $data['masterpegawai'] = $this->Pegawai_model->get_all(); 
 		$data['listsurvei'] = $this->Survei_model->get_all(); 
-		$data['kuant_dosen'] = $this->Kuantdosen_model->get_all(); 
+		$data['kuant_dosen'] = $this->Kuant_dosen_model->get_all(); 
 	    $this->load->view('template/head'); 
 	    $this->load->view('template/core_plugins'); 
 	    $this->load->view('kuantitatif/dosen', $data); 
@@ -43,7 +43,7 @@ class Kuant_dosen extends CI_Controller {
 
     public function read($id){	
 		header('Content-Type: application/json');
-		echo json_encode($this->Kuantdosen_model->get_by_id($id));
+		echo json_encode($this->Kuant_dosen_model->get_by_id($id));
     }
     
     public function readpegawai_byid($id=1){	
@@ -74,7 +74,7 @@ class Kuant_dosen extends CI_Controller {
 				'artikel' =>  $this->input->post('artikel', TRUE),
 				'sitasi' =>  $this->input->post('sitasi', TRUE),
 			); 
-			$id = $this->Kuantdosen_model->insert($data); 
+			$id = $this->Kuant_dosen_model->insert($data); 
 		}else{
 			$data = array( 
 				'pegawai' => $this->input->post('pegawai', TRUE),
@@ -96,14 +96,14 @@ class Kuant_dosen extends CI_Controller {
 				'artikel' =>  $this->input->post('artikel', TRUE),
 				'sitasi' =>  $this->input->post('sitasi', TRUE),
 			); 
-			$id = $this->Kuantdosen_model->update($id,$data); 
+			$id = $this->Kuant_dosen_model->update($id,$data); 
 		}
 		Redirect(base_url().'Kuant_dosen/', false);
 	}
  
 	function delete($id) 
 	{ 
-		$this->Kuantdosen_model->delete($id); 
+		$this->Kuant_dosen_model->delete($id); 
 		Redirect(base_url().'Kuant_dosen/', false);
 	} 
     

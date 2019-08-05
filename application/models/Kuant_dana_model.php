@@ -1,8 +1,8 @@
 <?php 
-class Kuantdosen_model extends CI_Model 
+class Kuant_dana_model extends CI_Model 
  
     { 
-    public $table = 'kuant_dosen'; 
+    public $table = 'kuant_dana'; 
  
     public $id = 'id'; 
  
