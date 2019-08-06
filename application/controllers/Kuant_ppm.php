@@ -51,8 +51,8 @@ class Kuant_ppm extends CI_Controller
     {
         $id=$this->input->get('id');
 
-        $this->Kuant_mahasiswa_model->delete($id);
-                redirect('Kuant_mahasiswa/index');
+        $this->Kuant_ppm_model->delete($id);
+                redirect('Kuant_ppm/index');
 
     }
 }

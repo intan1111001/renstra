@@ -66,7 +66,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
-							<form id="editform1" class="form-horizontal" action="insert" method="POST">
+							<form id="editform1" class="form-horizontal" action="<?=base_url()?>Kuant_ppm/insert" method="POST">
 								<input type="hidden" name="id">
 								<div class="row">
 									<div class="col-md-6">
@@ -91,7 +91,7 @@ License: You must have a valid license purchased only from themeforest(the above
 												<div class="input-icon right">
 													<i class="fa fa-microscope"></i>
 													<select id='tipe' class="form-control" placeholder="Masukkan Jenis PPM" name="tipe">
-													<option value="1" >Penelitian</option>
+														<option value="1">Penelitian</option>
 														<option value="2">PKM</option>
 														<option value="3">Publikasi</option>
 													</select>
@@ -100,7 +100,7 @@ License: You must have a valid license purchased only from themeforest(the above
 										</div>
 
 
-										
+
 										<div class="form-group">
 											<label class="col-md-4 control-label">Jumlah PPM</label>
 											<div class="col-md-8">
@@ -126,113 +126,115 @@ License: You must have a valid license purchased only from themeforest(the above
 											<label class="col-md-4 control-label">Subyek PPM</label>
 											<div class="col-md-8">
 												<div class="input-icon right">
-												
-												<select id='subjek' class="form-control" placeholder="Masukkan  Subyek PPM" name="subjek">
-												<option value="1" >Dosen</option>
+
+													<select id='subjek' class="form-control" placeholder="Masukkan  Subyek PPM" name="subjek">
+														<option value="1">Dosen</option>
 														<option value="2">Mahasiswa</option>
-														
+
 													</select>
+												</div>
 											</div>
 										</div>
+
+
+
+
+
+
+
 									</div>
 
 
 
 
-
-
-
 								</div>
-
-
-
-
 						</div>
-					</div>
 
-					<div class="modal-footer">
-						<button type="submit" class="btn green" id="btn_submit" name="btn_submit" onclick="
+						<div class="modal-footer">
+							<button type="submit" class="btn green" id="btn_submit" name="btn_submit" onclick="
 
 
                                         ">
-							<i class="fa fa-plus"></i> Tambah</button>
-						<button type="cancel" class="btn red" id="btn_hapus" name="btn_hapus">
+								<i class="fa fa-plus"></i> Simpan</button>
+							<button type="cancel" class="btn red" id="btn_hapus" name="btn_hapus">
 
-							Cancel</button>
+								Reset</button>
+						</div>
+					</div>
+					</form>
+					<!-- END FORM-->
+				</div>
+			</div>
+		</div>
+		<div id="form_detail_header">
+			<div class="portlet light bordered">
+				<div class="portlet-title">
+					<div class="caption">
+						<i class="fa fa-line-chart"></i>
+						<span class="caption-subject font-blue-hoki bold uppercase">Program Pengabdian pada Masyarakat</span>
 					</div>
 				</div>
-				</form>
-				<!-- END FORM-->
-			</div>
-		</div>
-	</div>
-	<div id="form_detail_header">
-		<div class="portlet light bordered">
-			<div class="portlet-title">
-				<div class="caption">
-					<i class="fa fa-line-chart"></i>
-					<span class="caption-subject font-blue-hoki bold uppercase">Program Pengabdian pada Masyarakat</span>
-				</div>
-			</div>
 
-			<div class="portlet-body form table-responsive">
-				<!-- BEGIN Tabel-->
-				<table class="table table-striped table-bordered table-responsive table-hover" id="sample_1">
-					<thead>
-						<tr>
-							<th> Tahun </th>
-							<th> Tipe PPM </th>
-							<th> Jumlah </th>
-
-							<th> Sumber Pembiayaan </th>
-							<th> Subyek PPM </th>
-							<th>Aksi</th>
-
-						</tr>
-					</thead>
-					<tbody id="table_body">
-						<?php
-						$start = 0;
-						foreach ($list as $model) {
-							?>
+				<div class="portlet-body form table-responsive">
+					<!-- BEGIN Tabel-->
+					<table class="table table-striped table-bordered table-responsive table-hover" id="sample_1">
+						<thead>
 							<tr>
+								<th>Aksi</th>
+								<th> Tahun </th>
+								<th> Tipe PPM </th>
+								<th> Jumlah </th>
 
-								<td><?= $model->tahun ?></td>
-								<td><?= $model->tipe==1?'Penelitian' : ($model->tipe==2?'PKM' : 'Publikasi')  ?></td>
-								<td><?= $model->jumlah ?></td>
-								<td><?= $model->jenis ?></td>
-								<td><?= $model->subjek==1?'Dosen' :'Mahasiswa' ?></td>
+								<th> Sumber Pembiayaan </th>
+								<th> Subyek PPM </th>
 
-								<td>
-									<button class="btn blue" href="koreksi?id=<?= $model->id ?>" id="btn_koreksi" onclick="
-            	$.getJSON('get?id=<?= $model->id ?>',
-            	function(data){
-               	$.each(data, function (index, value) {
-               	$.each(value, function (i, v) {
-                   	$('input[name='+i+']').val(v);
-                   	
-                       	$('#'+i+' option[value='+v+']').attr('selected','selected');
-                   	
-
-    	});
-    	});
-            	}
-             	);
-
-
-            	"> Koreksi </button> </i>
-									<a class="btn red" href="hapus?id=<?= $model->id ?>"> <i class="fa fa-trash"></i> Hapus</a> </i> </td>
 
 							</tr>
-						<?php
-						}
-						?>
-					</tbody>
-				</table>
-				<!-- END Table-->
+						</thead>
+						<tbody id="table_body">
+							<?php
+							$start = 0;
+							foreach ($list as $model) {
+								?>
+								<tr>
+
+									<td>
+										<button class="btn blue" href="koreksi?id=<?= $model->id ?>" id="btn_koreksi" onclick="
+            		$.getJSON('<?= base_url() ?>Kuant_ppm/get?id=<?= $model->id ?>',
+            		function(data){
+               		$.each(data, function (index, value) {
+               		$.each(value, function (i, v) {
+                   		$('input[name='+i+']').val(v);
+                   	
+                       		$('#'+i+' option[value='+v+']').attr('selected','selected');
+                   	
+
+    		});
+    		});
+            		}
+             		);
+
+
+            		"> Koreksi </button> </i>
+										<a class="btn red" href="<?= base_url() ?>Kuant_ppm/hapus?id=<?= $model->id ?>"> <i class="fa fa-trash"></i> Hapus</a> </i> </td>
+
+
+
+									<td><?= $model->tahun ?></td>
+									<td><?= $model->tipe == 1 ? 'Penelitian' : ($model->tipe == 2 ? 'PKM' : 'Publikasi')  ?></td>
+									<td><?= $model->jumlah ?></td>
+									<td><?= $model->jenis ?></td>
+									<td><?= $model->subjek == 1 ? 'Dosen' : 'Mahasiswa' ?></td>
+								</tr>
+							<?php
+							}
+							?>
+						</tbody>
+					</table>
+					<!-- END Table-->
+				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 	<!-- END CONTENT BODY -->
 	</div>
