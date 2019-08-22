@@ -94,46 +94,26 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <input type="hidden" id="id_next_indikator" name="id_next_indikator" value="<?php echo $id_next_indikator?>">
                                 <input type="hidden" id="id_back_indikator" name="id_back_indikator" value="<?php echo $id_back_indikator?>">
                                 <div class="row margin-bottom-20">
-                                        <div class="col-lg-4 col-md-6" >
-                                            <div class="portlet light" style="background: aliceblue;">
-                                                <div class="card-icon">
-                                                    <i class="icon-user-follow font-red-sunglo theme-font"></i>
-                                                </div>
-                                                <div class="card-title">
-                                                    <span> Capaian</span>
-                                                </div>
-                                                <div class="card-desc">
-                                                    <span> <?php echo $capaian[0]->capaian?> </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="portlet light" style="background: aliceblue;">
-                                                <div class="card-icon">
-                                                    <i class="icon-trophy font-green-haze theme-font"></i>
-                                                </div>
-                                                <div class="card-title">
-                                                    <span> Elemen </span>
-                                                </div>
-                                                <div class="card-desc">
-                                                    <span> <?php echo $capaian[0]->jenis ?> </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="portlet light" style="background: aliceblue;">
-                                                <div class="card-icon">
-                                                    <i class="icon-basket font-purple-wisteria theme-font"></i>
-                                                </div>
-                                                <div class="card-title">
-                                                    <span> Indikator </span>
-                                                </div>
-                                                <div class="card-desc">
-                                                    <span> <?php echo $capaian[0]->indikator_jenis?></span>
-                                                </div>
-                                            </div>
+                                    <div class="col-xs-4">
+                                        <div class="mt-element-ribbon bg-grey-steel">
+                                            <div class="ribbon ribbon-right ribbon-round ribbon-color-warning ribbon-shadow uppercase">Capaian</div>
+                                            <p class="ribbon-content"><?php echo $capaian[0]->capaian ?></p>
                                         </div>
                                     </div>
+                                    
+                                    <div class="col-xs-4">
+                                        <div class="mt-element-ribbon bg-grey-steel">
+                                            <div class="ribbon ribbon-right ribbon-round ribbon-color-success ribbon-shadow uppercase">Elemen</div>
+                                            <p class="ribbon-content"><?php echo $capaian[0]->jenis ?></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div class="mt-element-ribbon bg-grey-steel">
+                                            <div class="ribbon ribbon-right ribbon-round ribbon-color-info ribbon-shadow uppercase">Indikator</div>
+                                            <p class="ribbon-content"><?php echo $capaian[0]->indikator_jenis ?></p>
+                                        </div>
+                                    </div>
+                                </div>
                                     
                                     <div class="panel-group accordion scrollable" id="accordion1">
                                             <?php $start = 1;
@@ -141,7 +121,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
                                                     <h4 class="panel-title">
-                                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse_<?php echo $start?>"> Sub Indikator <?php echo $start?> </a>
+                                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse_<?php echo $start?>"> Sub Indikator <?php echo $start?> : <?php echo $subindikator_row->jenis?> </a>
                                                     </h4>
                                                 </div>
                                             <div id="collapse_<?php echo $start?>" <?php if($start == 1){?> class="panel-collapse in" <?php } else {?> class="panel-collapse collapse" <?php }?>>
@@ -150,11 +130,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <label class="col-md-6 "><?php echo $subindikator_row->jenis?></label>
                                                             <div class="col-md-6">
                                                                 <div class="mt-radio-inline">
-                                                                    <label class="mt-radio">
-                                                                        <input type="radio" name="radio_<?php echo $subindikator_row->id?>" id="optionsRadios4" value="1" <?php if($subindikator_row->dilakukan ==1){?> checked <?php } ?>> Ya
+                                                                    <label class="mt-radio" style="margin-bottom: 0px">
+                                                                        <input type="radio" name="radio_<?php echo $subindikator_row->id?>" id="optionsRadios4" value="1" <?php if($subindikator_row->dilakukan ==1){?> checked <?php } ?>> Dilakukan
                                                                         <span></span>
                                                                     </label>
-                                                                    <label class="mt-radio">
+                                                                    <label class="mt-radio" style="margin-bottom: 0px">
                                                                         <input type="radio" name="radio_<?php echo $subindikator_row->id?>" id="optionsRadios5" value="0" <?php if($subindikator_row->dilakukan ==0){?> checked <?php } ?>> Tidak
                                                                         <span></span>
                                                                     </label>
@@ -190,22 +170,22 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                         <td> <?php echo $komponen_row->jenis ?></td>
                                                                                         <td>
                                                                                         <div class="mt-radio-inline">
-                                                                                                <label class="mt-radio">
+                                                                                                <label class="mt-radio" style="margin-bottom: 0px">
                                                                                                     <input type="radio" name="sedia_<?php echo $komponen_row->id ?>" id="sedia_ada_<?php echo $komponen_row->id ?>" value="1" <?php if($komponen_row->ketersediaan ==1){?> checked <?php } ?>> Ada
                                                                                                     <span></span>
                                                                                                 </label>
-                                                                                                <label class="mt-radio">
+                                                                                                <label class="mt-radio" style="margin-bottom: 0px">
                                                                                                     <input type="radio" name="sedia_<?php echo $komponen_row->id ?>" id="sedia_tidak_<?php echo $komponen_row->jenis ?>" value="0" <?php if($komponen_row->ketersediaan ==0){?> checked <?php } ?>> Tidak
                                                                                                     <span></span>
                                                                                                 </label>
                                                                                             </div> 
                                                                                         </td>
                                                                                         <td>  <div class="mt-radio-inline">
-                                                                                                <label class="mt-radio">
+                                                                                                <label class="mt-radio" style="margin-bottom: 0px">
                                                                                                     <input type="radio" name="sesuai_<?php echo $komponen_row->id ?>" id="sesuai_ya_<?php echo $komponen_row->id ?>" value="1" <?php if($komponen_row->kesesuaian ==1){?> checked <?php } ?>> iya
                                                                                                     <span></span>
                                                                                                 </label>
-                                                                                                <label class="mt-radio">
+                                                                                                <label class="mt-radio" style="margin-bottom: 0px">
                                                                                                     <input type="radio" name="sesuai_<?php echo $komponen_row->id ?>" id="sesuai_tidak_<?php echo $komponen_row->id ?>" value="0" <?php if($komponen_row->kesesuaian ==0){?> checked <?php } ?>> Tidak
                                                                                                     <span></span>
                                                                                                 </label>
