@@ -37,7 +37,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				<div class="page-head">
 					<!-- BEGIN PAGE TITLE -->
 					<div class="page-title">
-						<h1> Program Pengabdian pada Masyarakat
+						<h1> Kegiatan Mahasiswa
 							<small>indikator 1.1</small>
 						</h1>
 					</div>
@@ -61,7 +61,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						<div class="portlet-title">
 							<div class="caption">
 								<i class="fa fa-line-chart"></i>
-								<span class="caption-subject font-blue-hoki bold uppercase">Form Program Pengabdian pada Masyarakat oleh Mahasiswa</span>
+								<span class="caption-subject font-blue-hoki bold uppercase">Form Kegiatan (Penelitian dan Pengabdian Masyarakat) Mahasiswa</span>
 							</div>
 						</div>
 						<div class="portlet-body form">
@@ -72,7 +72,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<div class="col-md-6">
 
 										<div class="form-group">
-											<label class="col-md-4 control-label">Pegawai</label>
+											<label class="col-md-4 control-label">Dosen</label>
 											<div class="col-md-8">
 												<select class="form-control combo" style="width:100%;" name="pegawai" id="pegawai">
 												<?php
@@ -106,7 +106,7 @@ License: You must have a valid license purchased only from themeforest(the above
 										</div>
 
 										<div class="form-group">
-											<label class="col-md-4 control-label">Tipe PPM</label>
+											<label class="col-md-4 control-label">Tipe Kegiatan</label>
 											<div class="col-md-8">
 												<div class="input-icon right">
 													<i class="fa fa-microscope"></i>
@@ -152,31 +152,14 @@ License: You must have a valid license purchased only from themeforest(the above
 												</div>
 											</div>
 										</div>
-
-
-
-
-
-
-
-
-
 									</div>
-
-
-
-
 								</div>
 						</div>
 
 						<div class="modal-footer">
-							<button type="submit" class="btn green" id="btn_submit" name="btn_submit" onclick="
-
-
-                                        ">
+							<button type="submit" class="btn green" id="btn_submit" name="btn_submit" onclick="">
 								<i class="fa fa-plus"></i> Simpan</button>
 							<button type="cancel" class="btn red" id="btn_hapus" name="btn_hapus">
-
 								Reset</button>
 						</div>
 					</div>
@@ -190,7 +173,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				<div class="portlet-title">
 					<div class="caption">
 						<i class="fa fa-line-chart"></i>
-						<span class="caption-subject font-blue-hoki bold uppercase">Program Pengabdian pada Masyarakat oleh Mahasiswa</span>
+						<span class="caption-subject font-blue-hoki bold uppercase">Kegiatan (Penelitian dan Pengabdian Masyarakat) Mahasiswa</span>
 					</div>
 				</div>
 
@@ -207,7 +190,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<th> Judul </th>
 
 								<th> Mahasiswa </th>
-								<th> Tipe PPM </th>
+								<th> Tipe Kegiatan </th>
 
 
 							</tr>

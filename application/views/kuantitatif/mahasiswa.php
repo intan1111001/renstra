@@ -38,7 +38,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					<!-- BEGIN PAGE TITLE -->
 					<div class="page-title">
 						<h1>Mahasiswa
-							<small>indikator 1.1</small>
+							<small>indikator </small>
 						</h1>
 					</div>
 					<!-- END PAGE TITLE -->

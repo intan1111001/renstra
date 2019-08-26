@@ -37,7 +37,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				<div class="page-head">
 					<!-- BEGIN PAGE TITLE -->
 					<div class="page-title">
-						<h1> Program Pengabdian pada Masyarakat
+						<h1> Penelitian dan Pengabdian pada Masyarakat
 							<small>indikator 1.1</small>
 						</h1>
 					</div>
@@ -61,7 +61,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						<div class="portlet-title">
 							<div class="caption">
 								<i class="fa fa-line-chart"></i>
-								<span class="caption-subject font-blue-hoki bold uppercase">Form Program Pengabdian pada Masyarakat</span>
+								<span class="caption-subject font-blue-hoki bold uppercase">Form Penelitian dan Pengabdian pada Masyarakat</span>
 							</div>
 						</div>
 						<div class="portlet-body form">
@@ -102,7 +102,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
 										<div class="form-group">
-											<label class="col-md-4 control-label">Jumlah PPM</label>
+											<label class="col-md-4 control-label">Jumlah Kegiatan</label>
 											<div class="col-md-8">
 												<div class="input-icon right">
 													<i class="fa fa-users"></i>
@@ -171,7 +171,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				<div class="portlet-title">
 					<div class="caption">
 						<i class="fa fa-line-chart"></i>
-						<span class="caption-subject font-blue-hoki bold uppercase">Program Pengabdian pada Masyarakat</span>
+						<span class="caption-subject font-blue-hoki bold uppercase">Penelitian dan Pengabdian pada Masyarakat</span>
 					</div>
 				</div>
 
