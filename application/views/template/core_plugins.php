@@ -1,6 +1,5 @@
 <!-- BEGIN CORE PLUGINS -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
-        <script src="<?php echo base_url()."assets/" ?>select2/js/select2.min.js"  type="text/javascript"></script>
         <script src="<?php echo base_url()."assets/" ?>theme/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url()."assets/" ?>theme/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url()."assets/" ?>theme/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
@@ -18,7 +17,8 @@
         <script src="<?php echo base_url()."assets/" ?>theme/assets/global/plugins/plupload/js/plupload.full.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url()."assets/" ?>theme/assets/global/plugins/typeahead/handlebars.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url()."assets/" ?>theme/assets/global/plugins/typeahead/typeahead.bundle.min.js" type="text/javascript"></script>
-
+		<script src="<?php echo base_url()."assets/" ?>theme/assets/global/plugins/select2/js/select2.min.js" type="text/javascript"></script>
+    
         
         <script src="<?php echo base_url()."assets/" ?>theme/assets/global/plugins/moment.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url()."assets/" ?>theme/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js" type="text/javascript"></script>

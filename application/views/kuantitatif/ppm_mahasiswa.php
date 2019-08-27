@@ -74,8 +74,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Dosen</label>
                                             <div class="col-md-8">
-                                                <select class="form-control combo" style="width:100%;" name="pegawai" id="pegawai">
-                                                <?php
+											<select class="form-control combo select2" style="width:100%;" name = "pegawai" id = "pegawai" >
+                                     <?php
                                                 if ($masterpegawai != null) {
                                                     foreach ($masterpegawai as $pegawai) {
                                                         ?> 
@@ -251,50 +251,18 @@ License: You must have a valid license purchased only from themeforest(the above
     <div class="quick-nav-overlay"></div>
     <!-- END QUICK NAV -->
 
-    <!-- BEGIN CORE PLUGINS -->
-    <script src="<?php echo base_url() . 'assets/' ?>theme/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-    <script src="<?php echo base_url() . 'assets/' ?>theme/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="<?php echo base_url() . 'assets/' ?>theme/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
-    <script src="<?php echo base_url() . 'assets/' ?>theme/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-    <script src="<?php echo base_url() . 'assets/' ?>theme/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-    <script src="<?php echo base_url() . 'assets/' ?>theme/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
-    <!-- END CORE PLUGINS -->
-    <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <script src="<?php echo base_url() . 'assets/' ?>theme/assets/global/plugins/bootstrap-tabdrop/js/bootstrap-tabdrop.js" type="text/javascript"></script>
-    <!-- END PAGE LEVEL PLUGINS -->
-    <!-- BEGIN THEME GLOBAL SCRIPTS -->
-    <script src="<?php echo base_url() . 'assets/' ?>theme/assets/global/scripts/app.min.js" type="text/javascript"></script>
-    <!-- END THEME GLOBAL SCRIPTS -->
-    <!-- BEGIN THEME LAYOUT SCRIPTS -->
-    <script src="<?php echo base_url() . 'assets/' ?>theme/assets/layouts/layout4/scripts/layout.min.js" type="text/javascript"></script>
-    <script src="<?php echo base_url() . 'assets/' ?>theme/assets/layouts/layout4/scripts/demo.min.js" type="text/javascript"></script>
-    <script src="<?php echo base_url() . 'assets/' ?>theme/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
-    <script src="<?php echo base_url() . 'assets/' ?>theme/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
-    <!-- END THEME LAYOUT SCRIPTS -->
 
     <script type="text/javascript">
-   $(document).ready(function(){
+  
+  $(document).ready(function() {
+                $("#pegawai").select2({
+					 allowClear: false,
+					 theme : 'classic',
+                     width: "resolve"
+				 });
+				 
+				})
 
-      $("#pegawai").select2({
-         ajax: { 
-           url: '<?= base_url() ?>index.php/User/getUsers',
-           type: "post",
-           dataType: 'json',
-           delay: 250,
-           data: function (params) {
-              return {
-                searchTerm: params.term // search term
-              };
-           },
-           processResults: function (response) {
-              return {
-                 results: response
-              };
-           },
-           cache: true
-         }
-     });
-   });
    </script>
 
 </body>

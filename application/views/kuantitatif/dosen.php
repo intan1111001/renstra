@@ -70,7 +70,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Pegawai</label>
                                         <div class="col-md-4">
-                                        <select class="form-control combo" style="width:100%;" name = "pegawai" id = "pegawai" onchange="javascript:show_detail_pegawai()">
+                                        <select class="form-control combo select2" style="width:100%;" name = "pegawai" id = "pegawai" onchange="javascript:show_detail_pegawai()">
                                         <?php
                                             if($masterpegawai != null){
                                             foreach ($masterpegawai as $pegawai) 
@@ -318,10 +318,11 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- END QUICK NAV -->
         <script>
             $(document).ready(function() {
-                // $(".combo").select2({
-                //     allowClear: true,
-                //     width: "resolve"
-                // });
+                $("#pegawai").select2({
+					 allowClear: false,
+					 theme : 'classic',
+                     width: "resolve"
+                 });
 
                 $('#reset').click(function(event) {
                     document.getElementById("id").value = "";                        

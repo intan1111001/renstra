@@ -38,7 +38,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					<!-- BEGIN PAGE TITLE -->
 					<div class="page-title">
 						<h1> Rekognisi Dosen
-							
+
 						</h1>
 					</div>
 					<!-- END PAGE TITLE -->
@@ -75,15 +75,14 @@ License: You must have a valid license purchased only from themeforest(the above
 											<label class="col-md-4 control-label">Dosen</label>
 											<div class="col-md-8">
 												<select class="form-control combo" style="width:100%;" name="pegawai" id="pegawai">
-												<?php
-                                            if($masterpegawai != null){
-                                            foreach ($masterpegawai as $pegawai) 
-                                                { 
-                                                    ?> 
-                                                    <option value="<?php echo $pegawai->id?>"><?php echo $pegawai->nama ?></option>
-                                                    <?php 
-                                                }
-                                            } ?>
+													<?php
+													if ($masterpegawai != null) {
+														foreach ($masterpegawai as $pegawai) {
+															?>
+													<option value="<?php echo $pegawai->id ?>"><?php echo $pegawai->nama ?></option>
+													<?php
+														}
+													} ?>
 												</select>
 											</div>
 										</div>
@@ -93,7 +92,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											<div class="col-md-8">
 												<div class="input-icon right">
 													<i class="fa fa-certificate"></i>
-													<input type="text" name="rekognisi"  class="form-control" id="rekognisi" placeholder="Masukkan Nama Rekognisi">
+													<input type="text" name="rekognisi" class="form-control" id="rekognisi" placeholder="Masukkan Nama Rekognisi">
 												</div>
 											</div>
 										</div>
@@ -178,7 +177,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 								<th> Tahun </th>
 								<th> Nama Rekognisi </th>
-							
+
 								<th> Tingkat </th>
 
 
@@ -189,10 +188,10 @@ License: You must have a valid license purchased only from themeforest(the above
 							$start = 0;
 							foreach ($list as $model) {
 								?>
-								<tr>
+							<tr>
 
-									<td>
-										<button class="btn blue" href="koreksi?id=<?= $model->id ?>" id="btn_koreksi" onclick="
+								<td>
+									<button class="btn blue" href="koreksi?id=<?= $model->id ?>" id="btn_koreksi" onclick="
             			$.getJSON('<?= base_url() ?>Kuant_rekognisi/get?id=<?= $model->id ?>',
             			function(data){
                			$.each(data, function (i, v) {
@@ -209,17 +208,17 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
             			"> Koreksi </button> </i>
-										<a class="btn red" href="<?= base_url() ?>Kuant_rekognisi/hapus?id=<?= $model->id ?>"> <i class="fa fa-trash"></i> Hapus</a> </i> </td>
+									<a class="btn red" href="<?= base_url() ?>Kuant_rekognisi/hapus?id=<?= $model->id ?>"> <i class="fa fa-trash"></i> Hapus</a> </i> </td>
 
 
-									<td><?= $model->pegawai ?></td>
-									<td><?= $model->tahun ?></td>
-							
-									<td><?= $model->rekognisi ?></td>
+								<td><?= $model->pegawai ?></td>
+								<td><?= $model->tahun ?></td>
 
-									<td><?= $model->tingkat == 1 ? 'Wilayah' : ($model->tingkat == 2 ? 'Nasional' : 'Internasional')  ?></td>
+								<td><?= $model->rekognisi ?></td>
 
-								</tr>
+								<td><?= $model->tingkat == 1 ? 'Wilayah' : ($model->tingkat == 2 ? 'Nasional' : 'Internasional')  ?></td>
+
+							</tr>
 							<?php
 							}
 							?>
@@ -240,27 +239,17 @@ License: You must have a valid license purchased only from themeforest(the above
 	<div class="quick-nav-overlay"></div>
 	<!-- END QUICK NAV -->
 
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#pegawai").select2({
+				allowClear: false,
+				theme: 'classic',
+				width: "resolve"
+			});
 
-	<!-- BEGIN CORE PLUGINS -->
-	<script src="<?php echo base_url() . "assets/" ?>theme/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url() . "assets/" ?>theme/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url() . "assets/" ?>theme/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url() . "assets/" ?>theme/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url() . "assets/" ?>theme/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url() . "assets/" ?>theme/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
-	<!-- END CORE PLUGINS -->
-	<!-- BEGIN PAGE LEVEL PLUGINS -->
-	<script src="<?php echo base_url() . "assets/" ?>theme/assets/global/plugins/bootstrap-tabdrop/js/bootstrap-tabdrop.js" type="text/javascript"></script>
-	<!-- END PAGE LEVEL PLUGINS -->
-	<!-- BEGIN THEME GLOBAL SCRIPTS -->
-	<script src="<?php echo base_url() . "assets/" ?>theme/assets/global/scripts/app.min.js" type="text/javascript"></script>
-	<!-- END THEME GLOBAL SCRIPTS -->
-	<!-- BEGIN THEME LAYOUT SCRIPTS -->
-	<script src="<?php echo base_url() . "assets/" ?>theme/assets/layouts/layout4/scripts/layout.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url() . "assets/" ?>theme/assets/layouts/layout4/scripts/demo.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url() . "assets/" ?>theme/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url() . "assets/" ?>theme/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
-	<!-- END THEME LAYOUT SCRIPTS -->
+		})
+	</script>
+
 
 
 </body>

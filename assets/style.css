@@ -1,0 +1,12 @@
+.select2-container .select2-search--inline {
+	float: left !important;
+	margin: 0 !important;
+	}
+
+
+	.select2-results__option {
+		padding: 5px !important;
+		user-select: none !important;
+		-webkit-user-select: none !important;
+		margin: 0px !important;
+	}
