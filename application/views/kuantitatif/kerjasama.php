@@ -64,21 +64,21 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                             <div class="portlet-body form">
                                 <!-- BEGIN FORM-->
-                                <form id="editform1" class="form-horizontal">
-
+								<form id="editform1" class="form-horizontal" action="<?= base_url() ?>Kuant_kerjasama/insert" method="POST">
+                  
                                     <div class="form-group">
                                         <label class="col-md-1 control-label">Lembaga</label>
                                         <div class="col-md-11">
                                             <div class="input-icon right">
                                                 <i class="fa fa-user"></i>
-                                                <input type="text" class="form-control" placeholder="Masukkan lembaga yang terlibat dalam kerjasama"> </div>
+                                                <input type="text" class="form-control" placeholder="Masukkan lembaga yang terlibat dalam kerjasama" name='lembaga'> </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-1 control-label">Tingkat</label>
                                         <div class="col-md-11">
                                             
-                                            <select class="form-control">
+                                            <select class="form-control" name='tingkat'>
                                               <option value="Internasional">Internasional</option>
                                               <option value="Nasional">Nasional</option>
                                               <option value="Lokal">Lokal</option>
@@ -89,24 +89,28 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <label class="col-md-1 control-label">Judul</label>
                                         <div class="col-md-11">
                                             <div class="input-icon right">
-                                                <input type="text" class="form-control" placeholder="Masukkan Judul Kegiatan Kerjasama"> </div>
+                                                <input type="text" class="form-control" placeholder="Masukkan Judul Kegiatan Kerjasama" name='judul'> </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-1 control-label">Manfaat</label>
                                         <div class="col-md-11">
                                             <div class="input-icon right">
-                                                <input type="text" class="form-control" placeholder="Masukkan Manfaat Kerjasama"> </div>
+                                                <input type="text" class="form-control" placeholder="Masukkan Manfaat Kerjasama" name='manfaat'> </div>
                                         </div>
                                     </div>
                                     
 
                                     <div class="modal-footer">
-                                        <button type="button" class="btn green"  id="next_body_detail" name="next_body_detail" >
-                                            <i class="fa fa-plus"></i> Tambah</button>
-                                        <button type="button" class="btn red"  id="next_body_detail" name="next_body_detail" >
-                                            <i class="fa fa-trash"></i> Hapus</button>
-                                    </div>
+                                    <button type="submit" class="btn green" id="btn_submit" name="btn_submit" onclick="
+
+
+                                        ">
+                                <i class="fa fa-plus"></i> Simpan</button>
+                            <button type="cancel" class="btn red" id="btn_hapus" name="btn_hapus">
+
+								Reset</button>
+							                                    </div>
                                 </form>
                                 <!-- END FORM-->
                             </div>
@@ -120,51 +124,63 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <span class="caption-subject font-blue-hoki bold uppercase">Tabel Kerjasama</span>
                                 </div>
                             </div>
-                            <div class="portlet-body form">
-                                <!-- BEGIN Tabel-->
-                                <table class="table table-striped table-bordered table-hover" id="sample_1">
-                                    <thead>
-                                        <tr>
-                                            <th> No </th>
-                                            <th> Lembaga Mitra</th>
-                                            <th> Tingkat</th>
-                                            <th> Judul </th>
-                                            <th> Manfaat </th>
-                                            <th> Aksi </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="table_body">
-                                        <?php 
-                                            $start = 0; 
-                                            foreach ($listsurvei as $survei) 
-                                            { 
-                                                ?> 
-                                                <tr> 
-                                                    <td> 
-                                                        <?php echo ++$start ?> 
-                                                    </td> 
-                                                    <td> 
-                                                        <?php echo $survei->tanggal ?> 
-                                                    </td> 
-                                                    <td> 
-                                                        <?php echo $survei->surveyor ?> 
-                                                    </td> 
-                                                    <td> 
-                                                        <?php echo $survei->unit ?> 
-                                                    </td>
-                                                    <td> 
-                                                        <?php echo $survei->status ?> 
-                                                    </td> 
-                                                    <td> 
-                                                        <?php echo $survei->status ?> 
-                                                    </td> 
-                                                </tr> 
-                                                <?php 
-                                            } 
-                                            ?> 
-                                        </tbody>
-                                    </table>
-                                <!-- END Table-->
+ 
+							<div class="portlet-body form table-responsive">
+                    <!-- BEGIN Tabel-->
+                    <table class="table table-striped table-bordered table-responsive table-hover" id="sample_1">
+                        <thead>
+                            <tr>
+							<th>Aksi</th>
+                                <th>Lembaga</th>
+                                <th> Judul </th>
+                                <th> Tingkat </th>
+
+                                <th> Manfaat </th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody id="table_body">
+                            <?php
+                            $start = 0;
+                            foreach ($list as $model) {
+                                ?>
+                                <tr>
+
+                                    <td>
+                                        <button class="btn blue" href="koreksi?id=<?= $model->id ?>" id="btn_koreksi" onclick="
+                        $.getJSON('<?= base_url() ?>Kuant_kerjasama/get?id=<?= $model->id ?>',
+                        function(data){
+                        $.each(data, function (i, v) {
+
+                            $('input[name='+i+']').val(v);
+
+                                $('#'+i+' option[value='+v+']').attr('selected','selected');
+
+
+
+                });
+                        }
+                        );
+
+
+                        "> Koreksi </button> </i>
+                                        <a class="btn red" href="<?= base_url() ?>Kuant_kerjasama/hapus?id=<?= $model->id ?>"> <i class="fa fa-trash"></i> Hapus</a> </i> </td>
+
+
+                                    <td><?= $model->lembaga ?></td>
+                                     <td><?= $model->judul ?></td>
+                                     <td><?= $model->manfaat ?></td>
+
+                                    <td><?= $model->tingkat ?></td>
+
+                                </tr>
+                                <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                    <!-- END Table-->
                             </div>
                         </div>
                     </div>                                 
