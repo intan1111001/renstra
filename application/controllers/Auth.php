@@ -14,13 +14,16 @@ class Auth extends CI_Controller
     public function index()
     {
         
-
-        $this->load->view('login');
+        if (!$this->session->userdata('username')) {
+            $this->load->view('login');
+        } else {
+            redirect(base_url('survei'));
+        }
     }
     public function login()
     {
         $username = $this->input->post('username', true);
-		$password = $this->input->post('password', true);
+        $password = $this->input->post('password', true);
 
 
         if (($this->Auth_model->login($username, $password)) > 0) {
@@ -32,9 +35,14 @@ class Auth extends CI_Controller
             $this->session->set_userdata($data_session);
             redirect(base_url('survei'));
         } else {
-			$this->session->set_flashdata('msg', 'Username Atau Password Salah');
-			redirect(base_url('auth'));
-		}
+            $this->session->set_flashdata('msg', 'Username Atau Password Salah');
+            redirect(base_url('auth'));
+        }
+    }
+    function logout()
+    {
+        $this->session->unset_userdata('username');
+        redirect(base_url('auth'));
     }
 }
         

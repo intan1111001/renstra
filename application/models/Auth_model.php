@@ -15,5 +15,6 @@ class Auth_model extends CI_Model
 			 $data = $this->simpeg->get_where('tbsimpeguser', $where);
 			 
             return $data->num_rows();
-    }
+	}
+	
 }
