@@ -233,7 +233,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
             						"> Koreksi </button> </i>
-									<a class="btn red" href="<?= base_url() ?>Kuant_rekognisi/hapus?id=<?= $model->id ?>"> <i class="fa fa-trash"></i> Hapus</a> </i> </td>
+									<a class="btn red" href="<?= base_url() ?>Kuant_rekognisi/hapus?id=<?= $model->id ?> &id_survei=<?=$id_survei ?>&id_indikator=<?=$id_indikator ?> "> <i class="fa fa-trash"></i> Hapus</a> </i> </td>
 
 
 								<td><?= $model->pegawai ?></td>
