@@ -20,7 +20,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!--[if !IE]><!-->
 <head>
         <meta charset="utf-8" />
-        <title>Metronic Admin Theme #4 | Tabs, Accordions & Navs</title>
+        <title>Aplikasi Baseline</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Preview page of Metronic Admin Theme #4 for metronic and bootstrap custom navbars, tabs, pills, accordions and resizable tabs based on bootstrap-tabdrop plugin" name="description" />

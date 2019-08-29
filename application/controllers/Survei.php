@@ -62,6 +62,15 @@ class Survei extends CI_Controller {
 			$id = $_SESSION["indikator_id"];
 		}
 		$res = $this->Elemen_model->getdatasurvei($id, $id_survei);
+		$survei =  $this->Survei_model->get_by_id($id_survei);
+		
+		if($res["capaian"][0]->iskualitatif == "0"){
+            return Redirect("Survey/indikator/".$id_survei."/".$id."/".$finish);
+        }
+        else{
+            return Redirect($res["capaian"][0]->iskualitatif."/indikator/".$id_survei."/".$id."/".$finish);
+        }
+		
 		$data['capaian'] = $res["capaian"]; 
 		$data['subindikator'] = $res["subindikator"]; 
 		$data['komponen'] = $res["komponen"]; 
@@ -74,6 +83,7 @@ class Survei extends CI_Controller {
 		$list_indikator = $this->Elemen_model->get_id_indikator();
 		$array_indikator_lenght = sizeof($list_indikator);
 		$array_id = (array_search($id, array_column($list_indikator,'id')));
+
 		if(($array_id == $array_indikator_lenght-1 ) and ($array_id != 0)){
 			$data['id_back_indikator'] = $list_indikator[$array_id-1]["id"]; 
 			$data['id_next_indikator'] = $list_indikator[$array_id]["id"]; 
@@ -93,9 +103,7 @@ class Survei extends CI_Controller {
 			$data['id_next_indikator'] = $list_indikator[$array_id+1]["id"]; 
 		}
 		
-		//print_r($array_id);
-		//die();
-         $this->load->view('template/head'); 
+        $this->load->view('template/head'); 
         $this->load->view('template/core_plugins'); 
         $this->load->view('survei/surveidetail', $data); 
 	}

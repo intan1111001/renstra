@@ -65,7 +65,7 @@ class Elemen_model extends CI_Model
 
     function getdatasurvei($id,$id_survei){
 
-        $sql = "select e.id id_elemen, e.capaian, e.jenis, i.id indokator_id, i.jenis indikator_jenis  FROM elemen e LEFT JOIN indikator i ON e.id = i.elemen_id where i.id = $id";
+        $sql = "select e.id id_elemen, e.capaian, e.jenis, i.id indokator_id, i.iskualitatif, i.jenis indikator_jenis  FROM elemen e LEFT JOIN indikator i ON e.id = i.elemen_id where i.id = $id";
         $query = $this->db->query($sql);
         $capaian = $query->result();
 

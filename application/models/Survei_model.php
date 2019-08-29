@@ -62,6 +62,14 @@ class Survei_model extends CI_Model
         $query = $this->simpeg->get();
         return $query->result();
     }
+    public function get_unit_by_id($kode_unit)
+    {
+        $this->simpeg->where('kode_unit',$kode_unit);
+        $this->simpeg->from('m_unit');
+        $this->simpeg->order_by("nama_unit", "ASC");
+        $query = $this->simpeg->get();
+        return $query->row();
+    }
 
     public function get_pegawai($id, $id_unit='', $filter='')
     {
