@@ -23,6 +23,15 @@ class Kuant_dana_model extends CI_Model
  
     // get data by id 
  
+	function get_by_unittahun($unit = "", $tahun = "") 
+    {
+        $tahun_awal = $tahun-2;
+        $where = "tahun <= ".$tahun." AND tahun >= ".$tahun_awal." AND unit >= ".$unit;
+        $this->db->where($where);
+        $this->db->order_by($this->id, $this->order); 
+        return $this->db->get($this->table)->result(); 
+    } 
+ 
     function get_by_id($id) 
         { 
         $this->db->where($this->id, $id); 
