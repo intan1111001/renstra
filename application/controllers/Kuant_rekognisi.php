@@ -57,10 +57,7 @@ class Kuant_rekognisi extends CI_Controller
         if($res["capaian"][0]->iskualitatif == "0"){
             return Redirect("Survey/indikator/".$id_survei."/".$id."/".$finish);
         }
-        else{
-            return Redirect($res["capaian"][0]->iskualitatif."/indikator/".$id_survei."/".$id."/".$finish);
-        }
-
+        
         $data['capaian'] = $res["capaian"]; 
         $data['subindikator'] = $res["subindikator"]; 
         $data['komponen'] = $res["komponen"]; 
@@ -95,6 +92,8 @@ class Kuant_rekognisi extends CI_Controller
         }
 
         $data['masterpegawai'] = $this->Pegawai_model->get_all();
+
+        
         $data['list'] = $this->Kuant_rekognisi_model->get_by_unittahun($survei->unit,intval($tahun));
 
         $this->load->view('template/head');

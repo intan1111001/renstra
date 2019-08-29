@@ -64,12 +64,9 @@ class Survei extends CI_Controller {
 		$res = $this->Elemen_model->getdatasurvei($id, $id_survei);
 		$survei =  $this->Survei_model->get_by_id($id_survei);
 		
-		if($res["capaian"][0]->iskualitatif == "0"){
-            return Redirect("Survey/indikator/".$id_survei."/".$id."/".$finish);
-        }
-        else{
-            return Redirect($res["capaian"][0]->iskualitatif."/indikator/".$id_survei."/".$id."/".$finish);
-        }
+		if($res["capaian"][0]->iskualitatif != "0"){
+			return Redirect($res["capaian"][0]->iskualitatif."/indikator/".$id_survei."/".$id."/".$finish);
+		}
 		
 		$data['capaian'] = $res["capaian"]; 
 		$data['subindikator'] = $res["subindikator"]; 
