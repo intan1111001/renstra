@@ -98,9 +98,9 @@ $db['default'] = array(
 
 $db['simpeg'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => '180.250.165.137',
 	'username' => 'root',
-	'password' => '',
+	'password' => 'mrpresident',
 	'database' => 'simpeg_0511',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

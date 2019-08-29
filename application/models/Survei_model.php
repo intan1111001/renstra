@@ -86,9 +86,11 @@ class Survei_model extends CI_Model
             $sql = $sql." Where id_unitkerja= '".$id_unit."' or id_unittugastambahan= '".$id_unit."' ";
         } elseif ($filter != '' && $filter != null) {
             $sql = $sql.$filter;
-        }
+		}
 
-        $query = $this->db->query($sql);
+   
+
+        $query = $this->simpeg->query($sql);
         return $query->result();
     }
 
