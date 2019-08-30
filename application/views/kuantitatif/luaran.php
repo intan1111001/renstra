@@ -329,7 +329,7 @@ License: You must have a valid license purchased only from themeforest(the above
         
         $('#close').click(function(event) {
             window.location.href = "<?php echo base_url();?>";
-
+        }); 
 
 
     </script>

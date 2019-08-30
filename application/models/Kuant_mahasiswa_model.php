@@ -30,6 +30,16 @@ class Kuant_mahasiswa_model extends CI_Model
     {
         $this->db->where($this->id, $id);
         return $this->db->get($this->table)->result_array();
+	}
+	
+	
+    function get_by_unittahun($unit = '', $tahun = '')
+    {
+        $tahun_awal = $tahun-2;
+        $where = 'tahun <= ' . $tahun . ' AND tahun >= ' . $tahun_awal . ' AND unit >= ' . $unit;
+        $this->db->where($where);
+        $this->db->order_by($this->id, $this->order);
+        return $this->db->get($this->table)->result();
     }
 
     // insert data
