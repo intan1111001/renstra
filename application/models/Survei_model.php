@@ -97,11 +97,14 @@ class Survei_model extends CI_Model
     public function get_all_survey($id)
     {
         $sql = "select s.*,t.nama, nama_unit FROM rsb.survei s
-        INNER JOIN simpeg_0511.tbpegawai t ON s.surveyor = t.nip
-        INNER JOIN simpeg_0511.m_unit u ON s.unit = u.kode_unit
-        WHERE s.surveyor = '$id'";
+        left JOIN simpeg_0511.tbpegawai t ON s.surveyor = t.nip
+        left JOIN simpeg_0511.m_unit u ON s.unit = u.kode_unit
+		WHERE s.surveyor = '$id'";
+	
         $query = $this->db->query($sql);
-        return $query->result();
+		return $query->result();
+		
+		
     }
 
     public function updatelastindikator($id, $indikator)
