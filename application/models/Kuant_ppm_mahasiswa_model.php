@@ -17,7 +17,7 @@ class Kuant_ppm_mahasiswa_model extends CI_Model
 
     // get all
 
-    public function get_all($filter = "")
+    public function get_all($filter = '')
     {
         $this->db->order_by($this->id, $this->order);
         return $this->db->get($this->table)->result();
@@ -50,6 +50,15 @@ class Kuant_ppm_mahasiswa_model extends CI_Model
     }
 
     // delete data
+    
+    function get_by_unittahun($unit = '', $tahun = '')
+    {
+        $tahun_awal = $tahun-2;
+        $where = 'tahun <= ' . $tahun . ' AND tahun >= ' . $tahun_awal . ' AND unit >= ' . $unit;
+        $this->db->where($where);
+        $this->db->order_by($this->id, $this->order);
+        return $this->db->get($this->table)->result();
+    }
 
     public function delete($id)
     {
@@ -60,7 +69,7 @@ class Kuant_ppm_mahasiswa_model extends CI_Model
     public function get_unit()
     {
         $this->simpeg->from('m_unit');
-        $this->simpeg->order_by("nama_unit", "ASC");
+        $this->simpeg->order_by('nama_unit', 'ASC');
         $query = $this->simpeg->get();
         return $query->result();
     }

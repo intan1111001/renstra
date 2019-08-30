@@ -9,8 +9,12 @@ class Kuant_ppm_mahasiswa extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Kuant_ppm_mahasiswa_model');
-        $this->load->model('Pegawai_model');
-    }
+		$this->load->model('Pegawai_model');
+		$this->load->model('Survei_model');
+        $this->load->model('Elemen_model');
+	}
+	
+	
 
     public function index()
     {
@@ -20,14 +24,77 @@ class Kuant_ppm_mahasiswa extends CI_Controller
         $this->load->view('template/head');
         $this->load->view('template/core_plugins');
         $this->load->view('kuantitatif/ppm_mahasiswa', $data);
+	}
+	public function indikator($id_survei = null, $id = null, $finish = 0)
+    {
+        if ($id_survei == null) {
+            $id_survei = $_SESSION['id_survei'];
+        }
+        if ($id == null) {
+            $id = $_SESSION['indikator_id'];
+        }
+        $res = $this->Elemen_model->getdatasurvei($id, $id_survei);
+        $survei =  $this->Survei_model->get_by_id($id_survei);
+        $tahun = date('Y', strtotime($survei->tanggal));
+        
+        if ($res['capaian'][0]->iskualitatif == '0') {
+            return Redirect('Survey/indikator/' . $id_survei . '/' . $id . '/' . $finish);
+        }
+        
+        $data['capaian'] = $res['capaian'];
+        $data['subindikator'] = $res['subindikator'];
+        $data['komponen'] = $res['komponen'];
+        $data['id_survei'] = $id_survei;
+        $data['survei'] = $survei;
+        if ($this->Survei_model->get_unit_by_id($survei->unit)) {
+            $data['unit_name'] = $this->Survei_model->get_unit_by_id($survei->unit)->nama_unit;
+        } else {
+            $data['unit_name']  = '';
+        }
+        $data['id_indikator'] = $id;
+        $data['last_indikator'] = 0;
+        $data['finish'] = $finish;
+        $_SESSION['subindikator'] = $res['subindikator'];
+        $list_indikator = $this->Elemen_model->get_id_indikator();
+        $array_indikator_lenght = sizeof($list_indikator);
+        $array_id = (array_search($id, array_column($list_indikator, 'id')));
+
+        if (($array_id == $array_indikator_lenght-1 ) and ($array_id != 0)) {
+            $data['id_back_indikator'] = $list_indikator[$array_id-1]['id'];
+            $data['id_next_indikator'] = $list_indikator[$array_id]['id'];
+            $data['last_indikator'] = 1;
+        } elseif (($array_id == $array_indikator_lenght-1) and ($array_id == 0)) {
+            $data['id_back_indikator'] = $list_indikator[0]['id'];
+            $data['id_next_indikator'] = $list_indikator[0]['id'];
+            $data['last_indikator'] = 1;
+        } elseif ($array_id == 0) {
+            $data['id_back_indikator'] = $list_indikator[0]['id'];
+            $data['id_next_indikator'] = $list_indikator[$array_id+1]['id'];
+        } else {
+            $data['id_back_indikator'] = $list_indikator[$array_id-1]['id'];
+            $data['id_next_indikator'] = $list_indikator[$array_id+1]['id'];
+        }
+
+        $data['masterpegawai'] = $this->Pegawai_model->get_all();
+
+        
+        $data['list'] = $this->Kuant_ppm_mahasiswa_model->get_by_unittahun($survei->unit, intval($tahun));
+
+        $this->load->view('template/head');
+        $this->load->view('template/core_plugins');
+        $this->load->view('kuantitatif/ppm_mahasiswa', $data);
     }
+
+
     public function insert()
     {
         $data = [
 
             'tahun' => $this->input->post('tahun'),
             'tipe' =>   $this->input->post('tipe'),
-            'tema' =>   $this->input->post('tema'),
+			'tema' =>   $this->input->post('tema'),
+			'unit' =>   $this->input->post('unit'),
+			
     
             'pegawai' =>    $this->input->post('pegawai'),
 
@@ -44,7 +111,8 @@ class Kuant_ppm_mahasiswa extends CI_Controller
         } else {
             $this->Kuant_ppm_mahasiswa_model->update($id, $data);
         }
-        redirect('Kuant_ppm_mahasiswa/index');
+		Redirect(base_url() . 'Kuant_ppm_mahasiswa/indikator/' . $this->input->post('id_survei', true) . '/' . $this->input->post('id_indikator', true), false);
+
     }
     public function get()
     {
@@ -57,7 +125,7 @@ class Kuant_ppm_mahasiswa extends CI_Controller
         $id=$this->input->get('id');
 
         $this->Kuant_ppm_mahasiswa_model->delete($id);
-                redirect('Kuant_ppm_mahasiswa/index');
+		Redirect(base_url() . 'Kuant_ppm_mahasiswa/indikator/' . $this->input->get('id_survei', true) . '/' . $this->input->get('id_indikator', true), false);
     }
 }
         
