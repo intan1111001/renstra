@@ -45,6 +45,10 @@ class Survei extends CI_Controller
  
     public function index()
     {
+		if (!$this->session->userdata('username')) {
+        
+            redirect(base_url('auth'));
+        }
         $_SESSION['indikator'] = $data_indikator = $this->Elemen_model->get_id_indikator();
         $_SESSION['indikator_id'] = $data_indikator[0];
         $data['indikator_id'] = $data_indikator[0];
@@ -60,6 +64,10 @@ class Survei extends CI_Controller
  
     public function indikator($id_survei = null, $id = null, $finish = 0)
     {
+		if (!$this->session->userdata('username')) {
+        
+            redirect(base_url('auth'));
+        }
         if ($id_survei == null) {
             $id_survei = $_SESSION['id_survei'];
         }
