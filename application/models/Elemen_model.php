@@ -65,7 +65,7 @@ class Elemen_model extends CI_Model
 
     function getdatasurvei($id,$id_survei){
 
-        $sql = "select e.id id_elemen, e.capaian, e.jenis, i.id indikator_id, i.iskualitatif, i.jenis indikator_jenis  FROM elemen e LEFT JOIN indikator i ON e.id = i.elemen_id where i.id = $id";
+        $sql = "select e.id id_elemen, e.capaian, e.jenis, i.id indikator_id, i.iskualitatif, i.jenis indikator_jenis   FROM elemen e LEFT JOIN indikator i ON e.id = i.elemen_id where i.id = $id";
         $query = $this->db->query($sql);
         $capaian = $query->result();
 
@@ -74,7 +74,7 @@ class Elemen_model extends CI_Model
         $query = $this->db->query($sql);
         $subindikator = $query->result();
 
-        $sql = "select k.id,subindikator_id, k.jenis, COALESCE(ketersediaan,-1) ketersediaan,COALESCE(kesesuaian,-1) kesesuaian  FROM elemen e JOIN indikator i ON e.id = i.elemen_id JOIN subindikator s ON i.id = s.indikator_id JOIN komponen k ON k.subindikator_id = s.id  
+        $sql = "select k.id,subindikator_id, k.jenis, COALESCE(ketersediaan,-1) ketersediaan,COALESCE(kesesuaian,-1) kesesuaian,keterangan,file  FROM elemen e JOIN indikator i ON e.id = i.elemen_id JOIN subindikator s ON i.id = s.indikator_id JOIN komponen k ON k.subindikator_id = s.id  
         LEFT JOIN dokpendukung d ON d.komponen_id = k.id AND d.survei_id = $id_survei
         where i.id = $id";
         $query = $this->db->query($sql);

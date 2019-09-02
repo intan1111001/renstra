@@ -194,7 +194,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                             </div> 
                                                                                         </td>
                                                                                         <td>
-                                                                                            <textarea rows="3" id="keterangan_<?php echo $komponen_row->id ?>" name="keterangan_<?php echo $komponen_row->id ?>" class="form-control"></textarea>
+                                                                                            <textarea rows="3" id="keterangan_<?php echo $komponen_row->id ?>" name="keterangan_<?php echo $komponen_row->id ?>" class="form-control"><?=$komponen_row->keterangan?></textarea>
                                                                                         </td>
                                                                                         <td>
                                                                                             <input type="file" name="file_<?php echo $komponen_row->id ?>" class="form-control" aria-describedby="sizing-addon2" id="image-source">

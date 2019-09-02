@@ -141,7 +141,9 @@ class Survei extends CI_Controller
                     'survei_id' => $this->input->post('id_survei', true),
                     'subindikator_id' => $data_subindikator_row->id,
                     'dilakukan' => $this->input->post('radio_' . $data_subindikator_row->id, true),
-                    'modifieddate' => date('Y-m-d H:i:s')
+			
+					'modifieddate' => date('Y-m-d H:i:s')
+					
                 ];
                 $this->Tindakan_model->update($check_exist_survei->id, $data);
             } else {
@@ -149,7 +151,8 @@ class Survei extends CI_Controller
                     'survei_id' => $this->input->post('id_survei', true),
                     'subindikator_id' => $data_subindikator_row->id,
                     'dilakukan' => $this->input->post('radio_' . $data_subindikator_row->id, true),
-                    'modifieddate' => date('Y-m-d H:i:s')
+					
+					'modifieddate' => date('Y-m-d H:i:s')
                 ];
                 $this->Tindakan_model->insert($data);
             }
@@ -163,7 +166,10 @@ class Survei extends CI_Controller
                     'survei_id' => $this->input->post('id_survei', true),
                     'komponen_id' => $komponen_row->id,
                     'ketersediaan' => $this->input->post('sedia_' . $komponen_row->id, true),
-                    'kesesuaian' => $this->input->post('sesuai_' . $komponen_row->id, true),
+					'kesesuaian' => $this->input->post('sesuai_' . $komponen_row->id, true),
+					'keterangan' => $this->input->post('keterangan_' . $komponen_row->id, true),
+					
+			
                     'modifieddate' => date('Y-m-d H:i:s')
                 ];
                 $this->Dokpendukung_model->update($check_exist_survei->id, $data);
@@ -172,7 +178,8 @@ class Survei extends CI_Controller
                     'survei_id' => $this->input->post('id_survei', true),
                     'komponen_id' => $komponen_row->id,
                     'ketersediaan' => $this->input->post('sedia_' . $komponen_row->id, true),
-                    'kesesuaian' => $this->input->post('sesuai_' . $komponen_row->id, true),
+					'kesesuaian' => $this->input->post('sesuai_' . $komponen_row->id, true),
+					'keterangan' => $this->input->post('keterangan_' . $komponen_row->id, true),
                     'modifieddate' => date('Y-m-d H:i:s')
                 ];
                 $this->Dokpendukung_model->insert($data);
