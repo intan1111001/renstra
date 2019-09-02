@@ -33,18 +33,25 @@
                     </form> -->
                     <!-- END HEADER SEARCH BOX -->
                     <!-- BEGIN TOP NAVIGATION MENU -->
-                    <div class="top-menu">
+					<div class="top-menu">
                         <ul class="nav navbar-nav pull-right">
                             <li class="separator hide"> </li>
                             <li class="separator hide"> </li>
                             <li class="separator hide"> </li>
                             <!-- BEGIN USER LOGIN DROPDOWN -->
                             <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                            <li class="dropdown dropdown-user dropdown-dark">
-                                <a href="<?php echo "assets/"; ?>javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+							<li class="dropdown dropdown-user dropdown-dark">
+                                <a href="<?php echo  base_url()."assets/"; ?>javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                     <span class="username username-hide-on-mobile"> <?php echo $this->session->userdata('nama') ?> </span>
                                     <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-                                    <img alt="" class="img-circle" src="<?php echo "assets/"; ?>theme/assets/layouts/layout4/img/avatar9.jpg" /> </a>
+                                    <img alt="" class="img-circle" src="<?php echo  base_url()."assets/"; ?>theme/assets/layouts/layout4/img/avatar9.jpg" /> </a>
+                                <ul class="dropdown-menu dropdown-menu-default">
+                                    
+                                    <li>
+                                        <a href="<?php echo base_url(); ?>auth/logout">
+                                            <i class="icon-key"></i> Log Out </a>
+                                    </li>
+                                </ul>
                             </li>
                             <!-- END USER LOGIN DROPDOWN -->
                         </ul>
