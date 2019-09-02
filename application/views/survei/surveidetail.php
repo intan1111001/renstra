@@ -158,6 +158,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                     <th> Komponen </th>
                                                                                     <th> Ketersediaan </th>
                                                                                     <th> Kesesuaian </th>
+                                                                                    <th> Keterangan </th>
+                                                                                    <th> File </th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
@@ -191,6 +193,15 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                                 </label>
                                                                                             </div> 
                                                                                         </td>
+                                                                                        <td>
+                                                                                            <textarea rows="3" id="keterangan_<?php echo $komponen_row->id ?>" name="keterangan_<?php echo $komponen_row->id ?>" class="form-control"></textarea>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <input type="file" name="file_<?php echo $komponen_row->id ?>" class="form-control" aria-describedby="sizing-addon2" id="image-source">
+                                                                                        </td>
+
+
+                                                                                        
                                                                                     </tr>
                                                                                 <?php $startkomponen = $startkomponen + 1;}
                                                                             } ?>
