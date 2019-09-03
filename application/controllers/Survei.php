@@ -34,7 +34,7 @@ class Survei extends CI_Controller
         $id = $this->session->userdata('username');
     
 
-		$pegawai = $this->Survei_model->get_pegawai($id);
+        $pegawai = $this->Survei_model->get_pegawai($id);
 
         $newdata = [
             'username'  => $id,
@@ -45,8 +45,7 @@ class Survei extends CI_Controller
  
     public function index()
     {
-		if (!$this->session->userdata('username')) {
-        
+        if (!$this->session->userdata('username')) {
             redirect(base_url('auth'));
         }
         $_SESSION['indikator'] = $data_indikator = $this->Elemen_model->get_id_indikator();
@@ -64,8 +63,7 @@ class Survei extends CI_Controller
  
     public function indikator($id_survei = null, $id = null, $finish = 0)
     {
-		if (!$this->session->userdata('username')) {
-        
+        if (!$this->session->userdata('username')) {
             redirect(base_url('auth'));
         }
         if ($id_survei == null) {
@@ -149,9 +147,9 @@ class Survei extends CI_Controller
                     'survei_id' => $this->input->post('id_survei', true),
                     'subindikator_id' => $data_subindikator_row->id,
                     'dilakukan' => $this->input->post('radio_' . $data_subindikator_row->id, true),
-			
-					'modifieddate' => date('Y-m-d H:i:s')
-					
+            
+                    'modifieddate' => date('Y-m-d H:i:s')
+                    
                 ];
                 $this->Tindakan_model->update($check_exist_survei->id, $data);
             } else {
@@ -159,8 +157,8 @@ class Survei extends CI_Controller
                     'survei_id' => $this->input->post('id_survei', true),
                     'subindikator_id' => $data_subindikator_row->id,
                     'dilakukan' => $this->input->post('radio_' . $data_subindikator_row->id, true),
-					
-					'modifieddate' => date('Y-m-d H:i:s')
+                    
+                    'modifieddate' => date('Y-m-d H:i:s')
                 ];
                 $this->Tindakan_model->insert($data);
             }
@@ -169,15 +167,28 @@ class Survei extends CI_Controller
         
         foreach ($komponen as $komponen_row) {
             $check_exist_survei = $this->Dokpendukung_model->get_by_survei($this->input->post('id_survei', true), $komponen_row->id);
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = 'docx|doc|pdf';
+            $config['max_size'] = 200000;
+
+            
+            $file = null;
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload('file_' . $komponen_row->id)) {
+                $file = $this->upload->file_name;
+			}
+		
+
+        
             if ($check_exist_survei != null) {
                 $data = [
                     'survei_id' => $this->input->post('id_survei', true),
                     'komponen_id' => $komponen_row->id,
                     'ketersediaan' => $this->input->post('sedia_' . $komponen_row->id, true),
-					'kesesuaian' => $this->input->post('sesuai_' . $komponen_row->id, true),
-					'keterangan' => $this->input->post('keterangan_' . $komponen_row->id, true),
-					
-			
+                    'kesesuaian' => $this->input->post('sesuai_' . $komponen_row->id, true),
+                    'keterangan' => $this->input->post('keterangan_' . $komponen_row->id, true),
+                    'file' => $file,
+            
                     'modifieddate' => date('Y-m-d H:i:s')
                 ];
                 $this->Dokpendukung_model->update($check_exist_survei->id, $data);
@@ -186,9 +197,10 @@ class Survei extends CI_Controller
                     'survei_id' => $this->input->post('id_survei', true),
                     'komponen_id' => $komponen_row->id,
                     'ketersediaan' => $this->input->post('sedia_' . $komponen_row->id, true),
-					'kesesuaian' => $this->input->post('sesuai_' . $komponen_row->id, true),
-					'keterangan' => $this->input->post('keterangan_' . $komponen_row->id, true),
-                    'modifieddate' => date('Y-m-d H:i:s')
+                    'kesesuaian' => $this->input->post('sesuai_' . $komponen_row->id, true),
+                    'keterangan' => $this->input->post('keterangan_' . $komponen_row->id, true),
+					'modifieddate' => date('Y-m-d H:i:s'),
+					'file' => $file,
                 ];
                 $this->Dokpendukung_model->insert($data);
             }

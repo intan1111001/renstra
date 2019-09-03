@@ -198,7 +198,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                         </td>
                                                                                         <td>
                                                                                             <input type="file" name="file_<?php echo $komponen_row->id ?>" class="form-control" aria-describedby="sizing-addon2" id="image-source">
-                                                                                        </td>
+																							<?php if($komponen_row->file !== null && $komponen_row->file!== "") {  ?>   
+																							<a href="<?=Base_Url().'uploads/'.$komponen_row->file?>" > Download </a> 
+																							<?php } ?>
+																						</td>
 
 
                                                                                         
