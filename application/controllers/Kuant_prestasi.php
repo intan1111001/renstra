@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Kuant_luaran extends CI_Controller
+class Kuant_prestasi extends CI_Controller
 {
 
     /**eko
@@ -28,7 +28,7 @@ class Kuant_luaran extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Survei_model');
-        $this->load->model('Kuant_luaran_model');
+        $this->load->model('Kuant_prestasi_model');
         $this->load->model('Pegawai_model');
         $this->load->model('Elemen_model');
     }
@@ -36,10 +36,10 @@ class Kuant_luaran extends CI_Controller
     public function index()
     {
         $data['masterpegawai'] = $this->Pegawai_model->get_all();
-        $data['list'] = $this->Kuant_luaran_model->get_all();
+        $data['list'] = $this->Kuant_prestasi_model->get_all();
         $this->load->view('template/head');
         $this->load->view('template/core_plugins');
-        $this->load->view('kuantitatif/luaran', $data);
+        $this->load->view('kuantitatif/prestasi', $data);
     }
 
     public function indikator($id_survei = null, $id = null, $finish = 0)
@@ -95,11 +95,11 @@ class Kuant_luaran extends CI_Controller
         $data['masterpegawai'] = $this->Pegawai_model->get_all();
 
 
-        $data['list'] = $this->Kuant_luaran_model->get_by_unittahun($survei->unit, intval($tahun));
+        $data['list'] = $this->Kuant_prestasi_model->get_by_unittahun($survei->unit, intval($tahun));
 
         $this->load->view('template/head');
         $this->load->view('template/core_plugins');
-        $this->load->view('kuantitatif/luaran', $data);
+        $this->load->view('kuantitatif/prestasi', $data);
     }
 
 
@@ -116,42 +116,41 @@ class Kuant_luaran extends CI_Controller
         $id = $this->input->post('id', true);
         if ($id == null && $id == '') {
             $data = [
-                  'pegawai' => $this->input->post('pegawai', true),
                 'tahun' => $this->input->post('tahun', true),
                 'nama' =>  $this->input->post('nama', true),
-                'judul' =>  $this->input->post('judul', true),
+                'tingkat' =>  $this->input->post('tingkat', true),
                 'tipe' =>  $this->input->post('tipe', true),
-                'subjek' =>  $this->input->post('subjek', true),
+                'prestasi' =>  $this->input->post('prestasi', true),
                 'unit' =>  $this->input->post('unit', true),
 
             ];
-            $id = $this->Kuant_luaran_model->insert($data);
+            $id = $this->Kuant_prestasi_model->insert($data);
         } else {
             $data = [
-            'pegawai' => $this->input->post('pegawai', true),
                 'tahun' => $this->input->post('tahun', true),
                 'nama' =>  $this->input->post('nama', true),
-                'judul' =>  $this->input->post('judul', true),
+                'tingkat' =>  $this->input->post('tingkat', true),
                 'tipe' =>  $this->input->post('tipe', true),
-                'subjek' =>  $this->input->post('subjek', true),
+                'prestasi' =>  $this->input->post('prestasi', true),
                 'unit' =>  $this->input->post('unit', true),
 
+
             ];
-            $id = $this->Kuant_luaran_model->update($id, $data);
+            $id = $this->Kuant_prestasi_model->update($id, $data);
         }
-        Redirect(base_url() . 'Kuant_luaran/indikator/' . $this->input->post('id_survei', true) . '/' . $this->input->post('id_indikator', true), false);
+        Redirect(base_url() . 'Kuant_prestasi/indikator/' . $this->input->post('id_survei', true) . '/' . $this->input->post('id_indikator', true), false);
     }
     public function get()
     {
         $id=$this->input->get('id');
-        echo json_encode($this->Kuant_luaran_model->get_by_id($id));
+        echo json_encode($this->Kuant_prestasi_model->get_by_id($id));
     }
 
     public function hapus()
     {
         $id=$this->input->get('id');
 
-        $this->Kuant_luaran_model->delete($id);
-        Redirect(base_url() . 'Kuant_luaran/indikator/' . $this->input->get('id_survei', true) . '/' . $this->input->get('id_indikator', true), false);
+        $this->Kuant_prestasi_model->delete($id);
+        Redirect(base_url() . 'Kuant_prestasi/indikator/' . $this->input->get('id_survei', true) . '/' . $this->input->get('id_indikator', true), false);
     }
 }

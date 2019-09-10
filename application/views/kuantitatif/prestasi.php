@@ -37,7 +37,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="page-head">
                     <!-- BEGIN PAGE TITLE -->
                     <div class="page-title">
-                        <h1> Luaran
+                        <h1> Prestasi
 
                         </h1>
                     </div>
@@ -61,12 +61,12 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="portlet-title">
                             <div class="caption">
                                 <i class="fa fa-line-chart"></i>
-                                <span class="caption-subject font-blue-hoki bold uppercase">Form Luaran</span>
+                                <span class="caption-subject font-blue-hoki bold uppercase">Form Prestasi</span>
                             </div>
                         </div>
                         <div class="portlet-body form">
                             <!-- BEGIN FORM-->
-                            <form id="editform1" class="form-horizontal" action="<?= base_url() ?>Kuant_luaran/insert" method="POST">
+                            <form id="editform1" class="form-horizontal" action="<?= base_url() ?>Kuant_Prestasi/insert" method="POST">
                                 <input type="hidden" name="id">
                                 <input type="hidden" id="id_indikator" name="id_indikator" value="<?php echo $id_indikator?>">
                                 <input type="hidden" id="id_survei" name="id_survei" value="<?php echo $id_survei?>">
@@ -97,22 +97,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="row">
                                     <div class="col-md-6">
 
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label">Dosen</label>
-                                            <div class="col-md-8">
-                                                <select class="form-control combo" style="width:100%;" name="pegawai" id="pegawai">
-                                                <?php
-                                                if ($masterpegawai != null) {
-                                                    foreach ($masterpegawai as $pegawai) {
-                                                        ?>
-                                                    <option value="<?php echo $pegawai->id?>"><?php echo $pegawai->nama ?></option>
-                                                        <?php
-                                                    }
-                                                } ?>
-                                                </select>
-                                            </div>
-										</div>
-										<div class="form-group">
+                              			<div class="form-group">
 
 
 									<label class="col-md-4 control-label">Unit</label>
@@ -129,30 +114,31 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
                                         <div class="form-group">
-                                            <label class="col-md-4 control-label">Nama luaran</label>
+                                            <label class="col-md-4 control-label">Nama Mahasiswa</label>
                                             <div class="col-md-8">
                                                 <div class="input-icon right">
-                                                    <i class="fa fa-book"></i>
-                                                    <input type="text" name="nama"  class="form-control" id="nama" placeholder="Masukkan Nama luaran">
+                                                    <input type="text" name="nama"  class="form-control" id="nama" placeholder="Masukkan Nama Prestasi">
                                                 </div>
                                             </div>
                                         </div>
 
                                            <div class="form-group">
-                                            <label class="col-md-4 control-label">Judul luaran</label>
+                                            <label class="col-md-4 control-label">Nama Prestasi</label>
                                             <div class="col-md-8">
                                                 <div class="input-icon right">
-                                                    <i class="fa fa-book"></i>
-                                                    <input type="text" name="judul"  class="form-control" id="judul" placeholder="Masukkan Judul luaran">
+                                                    <input type="text" name="prestasi"  class="form-control" id="prestasi" placeholder="Masukkan Nama Prestasi">
                                                 </div>
                                             </div>
                                         </div>
                          <div class="form-group">
-                                            <label class="col-md-4 control-label">Tipe luaran</label>
+                                            <label class="col-md-4 control-label">Tipe Prestasi</label>
                                             <div class="col-md-8">
                                                 <div class="input-icon right">
-                                                    <i class="fa fa-book"></i>
-                                                    <input type="text" name="tipe" class="form-control" id="tipe" placeholder="Masukkan Tipe luaran">
+                                                    <select id='tipe' class="form-control" placeholder="Masukkan Tipe Prestasi" name="tipe">
+                                                    <option value="1">Wilayah</option>
+                                                       <option value="2">Nasional</option>
+                                                        <option value="3">Internasional</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -163,7 +149,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <div class="col-md-8">
                                                 <div class="input-icon right">
                                                     <i class="fa fa-calendar"></i>
-                                                    <select id="tahun" class="form-control" placeholder="Masukkan Tahun luaran" name="tahun">
+                                                    <select id="tahun" class="form-control" placeholder="Masukkan Tahun Prestasi" name="tahun">
                                                         <option value="2019" selected>2019</option>
                                                         <option value="2018">2018</option>
                                                         <option value="2017">2017</option>
@@ -173,13 +159,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-md-4 control-label">Subjek luaran</label>
+                                            <label class="col-md-4 control-label">Tipe Prestasi</label>
                                             <div class="col-md-8">
                                                 <div class="input-icon right">
                                                     <i class="fa fa-user"></i>
-                                                    <select id='subjek' class="form-control" placeholder="Masukkan Subjek luaran" name="subjek">
-                                                        <option value="1">Mahasiswa</option>
-                                                        <option value="2">Dosen</option>
+                                                    <select id='tingkat' class="form-control" placeholder="Masukkan Tingkat Prestasi" name="tingkat">
+                                                       <option value="1">Akademik</option>
+                                                        <option value="2">Non Akademik</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -223,7 +209,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="portlet-title">
                     <div class="caption">
                         <i class="fa fa-line-chart"></i>
-                        <span class="caption-subject font-blue-hoki bold uppercase">luaran Dosen</span>
+                        <span class="caption-subject font-blue-hoki bold uppercase">Prestasi Dosen</span>
                     </div>
                 </div>
 
@@ -233,13 +219,13 @@ License: You must have a valid license purchased only from themeforest(the above
                         <thead>
                             <tr>
                                 <th>Aksi</th>
-                                <th> Dosen </th>
                                 <th> Tahun </th>
-                                <th> Nama luaran </th>
-                                <th> Judul luaran </th>
-                                <th> Tipe luaran </th>
+                                <th> Mahasiswa</th>
 
-                                <th> Subyek </th>
+                                <th> Nama Prestasi </th>
+                                <th> Tingkat Prestasi </th>
+                                <th> Tipe Prestasi </th>
+
 
 
                             </tr>
@@ -252,8 +238,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <tr>
 
                                     <td>
-                                        <button class="btn blue" href="koreksi?id=<?= $model->id ?>" id="btn_koreksi" onclick="
-                        $.getJSON('<?= base_url() ?>Kuant_luaran/get?id=<?= $model->id ?>',
+                                        <button class="btn blue" href="<?= base_url() ?>koreksi?id=<?= $model->id ?>" id="btn_koreksi" onclick="
+                        $.getJSON('<?= base_url() ?>Kuant_prestasi/get?id=<?= $model->id ?>',
                         function(data){
                         $.each(data, function (i, v) {
 
@@ -267,17 +253,17 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
                         "> Koreksi </button> </i>
-                                     <a class="btn red" href="<?= base_url() ?>Kuant_luaran/hapus?id=<?= $model->id ?> &id_survei=<?=$id_survei ?>&id_indikator=<?=$id_indikator ?> "> <i class="fa fa-trash"></i> Hapus</a> </i> </td>
+                                     <a class="btn red" href="<?= base_url() ?>Kuant_Prestasi/hapus?id=<?= $model->id ?> &id_survei=<?=$id_survei ?>&id_indikator=<?=$id_indikator ?> "> <i class="fa fa-trash"></i> Hapus</a> </i> </td>
 
 
-                                    <td><?= $model->pegawai ?></td>
                                     <td><?= $model->tahun ?></td>
 
                                     <td><?= $model->nama ?></td>
-                                    <td><?= $model->judul ?></td>
-                                     <td><?= $model->tipe ?></td>
+                                    <td><?= $model->prestasi ?></td>
 
-                                    <td><?= $model->subjek == 1 ? 'Mahasiswa' : 'Dosen' ?></td>
+                                    <td><?= $model->tipe == 1 ? 'Akademik' : 'Non Akademik' ?></td>
+
+								<td><?= $model->tingkat == 1 ? 'Wilayah' : ($model->tingkat == 2 ? 'Nasional' : 'Internasional')  ?></td>
 
                                 </tr>
                                 <?php
