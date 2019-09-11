@@ -227,9 +227,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <i class="fa fa-close"></i> Close</button>
                                     <button type="button" class="btn blue"  id="back_body_detail" name="back_body_detail" >
                                         <i class="fa fa-angle-left"></i> Back</button>
-                                    <?php if($finish == 0){?>    
+                                     
                                         <input class="btn green" type="submit" value="Save"> 
-                                    <?php }?>
+                              
                                     <?php if($last_indikator == 0){?>                     
                                         <button type="button" class="btn blue"  id="next_body_detail" name="next_body_detail" >
                                             <i class="fa fa-angle-right"></i> Next</button>
