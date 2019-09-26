@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => 'uinsby.ac.id',
 	'username' => 'root',
-	'password' => '',
+	'password' => 'mrpresident',
 	'database' => 'rsb',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
@@ -98,7 +98,7 @@ $db['default'] = array(
 
 $db['simpeg'] = array(
 	'dsn'	=> '',
-	'hostname' => '180.250.165.137',
+	'hostname' => 'uinsby.ac.id',
 	'username' => 'root',
 	'password' => 'mrpresident',
 	'database' => 'simpeg_0511',

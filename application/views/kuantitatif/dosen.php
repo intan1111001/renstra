@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+get_instance()->load->helper('rsb');
 
 ?><!DOCTYPE html>
 <!-- 
@@ -251,7 +252,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <th> Aksi </th>
                                             <th> No </th>
                                             <th> Pegawai</th>
-                                            <th> Unit</th>
+                                           
                                             <th> Tahun</th>
                                             <th> S2</th>
                                             <th> S3 </th>
@@ -281,8 +282,14 @@ License: You must have a valid license purchased only from themeforest(the above
 			            			$.getJSON('<?= base_url() ?>Kuant_dosen/get?id=<?= $dosen->id ?>',
 				            			function(data){
 					               			$.each(data, function (i, v) {               			
-					                   			$('input[name='+i+']').val(v);                   	
+					                   			$('input[name='+i+']').val(v).change();         
+                                 try {         
+                                      $('#'+i).val(v).change();                                                   
 					                       			$('#'+i+' option[value='+v+']').attr('selected','selected');
+                                       
+                                  } catch(e) {
+                                      console.log(e);                                                                                     
+                                                                                                                           }                                                                                         
 				    							});
 				            				}
 			             			);
@@ -296,11 +303,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                             <?php echo ++$start ?> 
                                                                         </td> 
                                                                         <td> 
-                                                                            <?php echo $dosen->pegawai ?> 
+                                                                            <?php echo getPegawai($dosen->pegawai) ?> 
                                                                         </td> 
-                                                                        <td> 
-                                                                            <?php echo $dosen->unit ?> 
-                                                                        </td> 
+                                                                  
                                                                         <td> 
                                                                             <?php echo $dosen->tahun ?> 
                                                                         </td>

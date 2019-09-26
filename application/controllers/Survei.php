@@ -74,9 +74,15 @@ class Survei extends CI_Controller
         }
         $res = $this->Elemen_model->getdatasurvei($id, $id_survei);
         $survei =  $this->Survei_model->get_by_id($id_survei);
-        
-        if ($res['capaian'][0]->iskualitatif != '0') {
+
+        if (sizeof($res['capaian'])>0) {        
+        if ($res['capaian'][0]->iskualitatif != '0'  ) {
             return Redirect($res['capaian'][0]->iskualitatif . '/indikator/' . $id_survei . '/' . $id . '/' . $finish);
+        }
+          
+        } else {
+            return Redirect( 'Survei/indikator/' . $id_survei . '/' . 1 . '/' . $finish);
+          
         }
         
         $data['capaian'] = $res['capaian'];
@@ -91,6 +97,8 @@ class Survei extends CI_Controller
         $list_indikator = $this->Elemen_model->get_id_indikator();
         $array_indikator_lenght = sizeof($list_indikator);
         $array_id = (array_search($id, array_column($list_indikator, 'id')));
+      
+
 
         if (($array_id == $array_indikator_lenght-1 ) and ($array_id != 0)) {
             $data['id_back_indikator'] = $list_indikator[$array_id-1]['id'];
@@ -103,10 +111,12 @@ class Survei extends CI_Controller
         } elseif ($array_id == 0) {
             $data['id_back_indikator'] = $list_indikator[0]['id'];
             $data['id_next_indikator'] = $list_indikator[$array_id+1]['id'];
+       
         } else {
             $data['id_back_indikator'] = $list_indikator[$array_id-1]['id'];
             $data['id_next_indikator'] = $list_indikator[$array_id+1]['id'];
-        }
+         }
+      
         
         $this->load->view('template/head');
         $this->load->view('template/core_plugins');
@@ -168,29 +178,45 @@ class Survei extends CI_Controller
         foreach ($komponen as $komponen_row) {
             $check_exist_survei = $this->Dokpendukung_model->get_by_survei($this->input->post('id_survei', true), $komponen_row->id);
             $config['upload_path'] = './uploads/';
-            $config['allowed_types'] = 'docx|doc|pdf';
+            $config['allowed_types'] = 'docx|doc|pdf|jpg|jpeg|png';
             $config['max_size'] = 200000;
 
             
             $file = null;
             $this->load->library('upload', $config);
             if ($this->upload->do_upload('file_' . $komponen_row->id)) {
-                $file = $this->upload->file_name;
+               
+                $file =  md5(microtime()) . '-'.$this->upload->file_name;
 			}
 		
 
         
             if ($check_exist_survei != null) {
+              if($file !== null ) {
                 $data = [
                     'survei_id' => $this->input->post('id_survei', true),
                     'komponen_id' => $komponen_row->id,
                     'ketersediaan' => $this->input->post('sedia_' . $komponen_row->id, true),
                     'kesesuaian' => $this->input->post('sesuai_' . $komponen_row->id, true),
                     'keterangan' => $this->input->post('keterangan_' . $komponen_row->id, true),
+                  
                     'file' => $file,
             
                     'modifieddate' => date('Y-m-d H:i:s')
                 ];
+               } else {
+                $data = [
+                    'survei_id' => $this->input->post('id_survei', true),
+                    'komponen_id' => $komponen_row->id,
+                    'ketersediaan' => $this->input->post('sedia_' . $komponen_row->id, true),
+                    'kesesuaian' => $this->input->post('sesuai_' . $komponen_row->id, true),
+                    'keterangan' => $this->input->post('keterangan_' . $komponen_row->id, true),
+                  
+               
+                    'modifieddate' => date('Y-m-d H:i:s')
+                ];
+                
+              }
                 $this->Dokpendukung_model->update($check_exist_survei->id, $data);
             } else {
                 $data = [
@@ -199,8 +225,8 @@ class Survei extends CI_Controller
                     'ketersediaan' => $this->input->post('sedia_' . $komponen_row->id, true),
                     'kesesuaian' => $this->input->post('sesuai_' . $komponen_row->id, true),
                     'keterangan' => $this->input->post('keterangan_' . $komponen_row->id, true),
-					'modifieddate' => date('Y-m-d H:i:s'),
-					'file' => $file,
+			          		'modifieddate' => date('Y-m-d H:i:s'),
+				          	'file' => $file,
                 ];
                 $this->Dokpendukung_model->insert($data);
             }

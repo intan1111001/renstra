@@ -207,7 +207,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											<div class="col-md-8">
 												<div class="input-icon right">
 													<i class="fa fa-graduation-cap"></i>
-													<input type='number' class="form-control" placeholder="Masukkan IPK Minimum" name="lulus_minipk">
+													<input type='text' class="form-control" placeholder="Masukkan IPK Minimum" name="lulus_minipk">
 												</div>
 											</div>
 										</div>
@@ -218,7 +218,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											<div class="col-md-8">
 												<div class="input-icon right">
 													<i class="fa fa-graduation-cap"></i>
-													<input type='number' class="form-control" placeholder="Masukkan IPK Rata-Rata" name="lulus_rataipk">
+													<input type='text' class="form-control" placeholder="Masukkan IPK Rata-Rata" name="lulus_rataipk">
 												</div>
 											</div>
 										</div>
@@ -229,7 +229,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											<div class="col-md-8">
 												<div class="input-icon right">
 													<i class="fa fa-graduation-cap"></i>
-													<input type='number' class="form-control" placeholder="Masukkan IPK Maksimum" name="lulus_maxipk">
+													<input type='text' class="form-control" placeholder="Masukkan IPK Maksimum" name="lulus_maxipk">
 												</div>
 											</div>
 										</div>

@@ -17,7 +17,7 @@ class Survei_model extends CI_Model
 
     public function get_all($filter = "")
     {
-        $this->db->order_by($this->id, $this->order);
+        $this->db->where('status>0')->order_by($this->id, $this->order);
         return $this->db->get($this->table)->result();
         // return $this->db->get("laporan");
     }
@@ -96,11 +96,15 @@ class Survei_model extends CI_Model
 
     public function get_all_survey($id)
     {
+      
+      
         $sql = "select s.*,t.nama, nama_unit FROM rsb.survei s
         left JOIN simpeg_0511.tbpegawai t ON s.surveyor = t.nip
         left JOIN simpeg_0511.m_unit u ON s.unit = u.kode_unit
-		WHERE s.surveyor = '$id'";
+        left join admin a on a.pegawai  = '$id'
+		WHERE  s.status>0 and ((s.surveyor = '$id' and a.id is null) or (a.id is not null)) " ;
 	
+      
         $query = $this->db->query($sql);
 		return $query->result();
 		
@@ -109,8 +113,10 @@ class Survei_model extends CI_Model
 
     public function updatelastindikator($id, $indikator)
     {
-        $sql = "update survei set indikator_terakhir = $indikator, modifieddate= now() where id = $id";
-        $query = $this->db->query($sql);
+        if ($id !="" && $indikator!="") {
+          $sql = "update survei set indikator_terakhir = $indikator, modifieddate= now() where id = $id";
+          $query = $this->db->query($sql);
+        }  
     }
 
     public function submitsurvei($id)

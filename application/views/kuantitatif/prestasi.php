@@ -66,7 +66,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         </div>
                         <div class="portlet-body form">
                             <!-- BEGIN FORM-->
-                            <form id="editform1" class="form-horizontal" action="<?= base_url() ?>Kuant_Prestasi/insert" method="POST">
+                            <form id="editform1" class="form-horizontal" action="<?= base_url() ?>Kuant_prestasi/insert" method="POST">
                                 <input type="hidden" name="id">
                                 <input type="hidden" id="id_indikator" name="id_indikator" value="<?php echo $id_indikator?>">
                                 <input type="hidden" id="id_survei" name="id_survei" value="<?php echo $id_survei?>">
