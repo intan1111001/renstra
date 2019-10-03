@@ -348,10 +348,16 @@ License: You must have a valid license purchased only from themeforest(the above
             	function(data){
                	$.each(data, function (index, value) {
                	$.each(value, function (i, v) {
-                   	$('input[name='+i+']').val(v);
+                   	$('input[name='+i+']').val(v).change();;
                    	if(i=='tahun'){
-                 //      	$('#tahun option[value='+v+']').attr('selected','selected');
+                       	$('#tahun option[value='+v+']').attr('selected','selected');
                    	}
+                     $('#btn_submit').html('Update');                                                                                    
+                                                                                                         
+                                                                                                          
+                                                                                                         
+                                                                                                         
+                                                                                                         
 
     	});
     	});

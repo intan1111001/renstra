@@ -186,7 +186,7 @@ class Survei extends CI_Controller
             $this->load->library('upload', $config);
             if ($this->upload->do_upload('file_' . $komponen_row->id)) {
                
-                $file =  md5(microtime()) . '-'.$this->upload->file_name;
+                $file = $this->upload->file_name;
 			}
 		
 

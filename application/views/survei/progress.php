@@ -71,14 +71,17 @@ License: You must have a valid license purchased only from themeforest(the above
                                                           <th> No.</th>
                                                             <th> Kode Unit </th>
                                                             <th> Nama Unit </th>
-                                                            <?php 
+                                                            <?php /*
+                                                        
                                                             $survei= reset($list);
                                                              for ($i=1;$i<=74;$i++ ) {
                                                                  if (array_key_exists('I'.$i,$survei))
                                                                echo "<th>Ind - $i (%)</th>";
                                                              }
+                                                             */
                                                           
                                                            ?>
+                                                          <th> Progress % </th>
                                                         </tr>
                                                     </thead>
                                                     <tbody id="upcoming_table_body">
@@ -101,11 +104,20 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                             <?php echo $survei['nama_unit']?> 
                                                                         </td>
                                                                        <?php 
+                                                                      $x = 0;
+                                                                      $count = 0;
                                                              for ($i=1;$i<=74;$i++ ) {
-                                                               if (array_key_exists('I'.$i,$survei))
-                                                               echo "<td>".(int) $survei['I'.$i] ."  </td>";
+                                                               if (array_key_exists('I'.$i,$survei)) {
+                                                                   $x+=(int) $survei['I'.$i];
+                                                                   $count++;
+                                                                //  echo "<td>".(int) $survei['I'.$i] ."  </td>";
+                                                               }  
                                                              }
+                                                                  if ($count ==0) {
+                                                                    $count=1;
+                                                                  }
                                                            ?>
+                                                                      <td> <?= round($x/$count,2);?> </td>
                                                                        
                                                                      
                                                                     </tr> 
@@ -213,3 +225,4 @@ License: You must have a valid license purchased only from themeforest(the above
     </body>
 
 </html>
+
