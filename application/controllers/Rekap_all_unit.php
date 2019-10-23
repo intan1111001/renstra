@@ -128,4 +128,16 @@ class Rekap_all_unit extends CI_Controller
         $this->load->view('template/core_plugins');
         $this->load->view('survei/rekap_all', $data);
     }
+
+    public function tindakan($indikator_id,$dilakukan,$subindikator_id)
+    {
+        header('Content-Type: application/json');
+        echo json_encode($this->Elemen_model->getdetaildilakukan($indikator_id,$dilakukan,$subindikator_id));
+    }
+
+    public function dokpendukung($indikator_id,$ketersediaan, $kesesuaian, $subindikator_id, $komponen_id)
+    {
+        header('Content-Type: application/json');
+        echo json_encode($this->Elemen_model->getdokpendukung($indikator_id,$ketersediaan, $kesesuaian, $subindikator_id, $komponen_id));
+    }
 }

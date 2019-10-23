@@ -131,12 +131,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                                             <div class="col-md-6">
                                                                 <div class="mt-radio-inline">
                                                                     <!-- <label class="mt-radio" style="margin-bottom: 0px"> -->
-                                                                    <label class="col-md-6 ">Dilakukan = <b><?php echo $subindikator_row->ya?> %</b></label>
+                                                                    <label class="col-md-6 "><a href="javascript:detiltindakan('<?php echo $subindikator_row->indikator_id ?>',1,'<?php echo $subindikator_row->id ?>');">Dilakukan = <b><?php echo $subindikator_row->ya?> %</b></a></label>
                                                                         <!-- <input type="radio" name="radio_<?php //echo $subindikator_row->id?>" id="optionsRadios4" value="1" <?php //if($subindikator_row->dilakukan ==1){?> checked <?php //} ?>> Dilakukan
                                                                         <span></span> -->
                                                                     <!-- </label> -->
                                                                     <!-- <label class="mt-radio" style="margin-bottom: 0px"> -->
-                                                                    <label class="col-md-6 ">Tidak Dilakukan = <b><?php echo $subindikator_row->tidak?> %</b></label>
+                                                                    <label class="col-md-6 "><a href="javascript:detiltindakan('<?php echo $subindikator_row->indikator_id ?>',0,'<?php echo $subindikator_row->id ?>');">Tidak Dilakukan = <b><?php echo $subindikator_row->tidak?> %</b></a></label>
                                                                         <!-- <input type="radio" name="radio_<?php //echo $subindikator_row->id?>" id="optionsRadios5" value="0" <?php //if($subindikator_row->dilakukan ==0){?> checked <?php //} ?>> Tidak
                                                                         <span></span> -->
                                                                     <!-- </label> -->
@@ -172,10 +172,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                     <tr>
                                                                                         <td> <?php echo $startkomponen ?></td>
                                                                                         <td> <?php echo $komponen_row->jenis ?></td>
-                                                                                        <td> <?php echo $komponen_row->ya_ketersediaan ?>%</td>
-                                                                                        <td> <?php echo $komponen_row->tidak_ketersediaan ?>%</td>
-                                                                                        <td> <?php echo $komponen_row->ya_kesesuaian ?>%</td>
-                                                                                        <td> <?php echo $komponen_row->tidak_kesesuaian ?>%</td>
+                                                                                        <td> <a href="javascript:detildokpendukung('<?php echo $komponen_row->indikator_id ?>',1,null,'<?php echo $komponen_row->subindikator_id ?>','<?php echo $komponen_row->id ?>');"><?php echo $komponen_row->ya_ketersediaan ?>%</a></td>
+                                                                                        <td> <a href="javascript:detildokpendukung('<?php echo $komponen_row->indikator_id ?>',0,null,'<?php echo $komponen_row->subindikator_id ?>','<?php echo $komponen_row->id ?>');"><?php echo $komponen_row->tidak_ketersediaan ?>%</a></td>
+                                                                                        <td> <a href="javascript:detildokpendukung('<?php echo $komponen_row->indikator_id ?>',null,1,'<?php echo $komponen_row->subindikator_id ?>','<?php echo $komponen_row->id ?>');"><?php echo $komponen_row->ya_kesesuaian ?>%</a></td>
+                                                                                        <td> <a href="javascript:detildokpendukung('<?php echo $komponen_row->indikator_id ?>',null,0,'<?php echo $komponen_row->subindikator_id ?>','<?php echo $komponen_row->id ?>');"><?php echo $komponen_row->tidak_kesesuaian ?>%</a></td>
                                                                                     </tr>
                                                                                 <?php $startkomponen = $startkomponen + 1;}
                                                                             } ?>
@@ -205,9 +205,95 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <?php }?>
                                 
                                 </form>
-		</div>
+		        </div>
+
+               
         </div>
-	
+        <div id="detail_modal" class="modal fade" role="dialog" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title">List Prodi</h4>
+						</div>
+						<div class="modal-body">
+
+                             <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                             <div class="portlet light portlet-fit portlet-datatable bordered">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class="icon-settings font-green"></i>
+                                        <span class="caption-subject font-green sbold uppercase">List Prodi</span>
+                                    </div>
+                                    <div class="actions">
+                                        <div class="btn-group btn-group-devided" data-toggle="buttons">
+                                            <label class="btn btn-transparent grey-salsa btn-outline btn-circle btn-sm active">
+                                                <input type="radio" name="options" class="toggle" id="option1">Actions</label>
+                                            <label class="btn btn-transparent grey-salsa btn-outline btn-circle btn-sm">
+                                                <input type="radio" name="options" class="toggle" id="option2">Settings</label>
+                                        </div>
+                                        <div class="btn-group">
+                                            <a class="btn red btn-outline btn-circle" href="javascript:;" data-toggle="dropdown">
+                                                <i class="fa fa-share"></i>
+                                                <span class="hidden-xs"> Trigger Tools </span>
+                                                <i class="fa fa-angle-down"></i>
+                                            </a>
+                                            <ul class="dropdown-menu pull-right" id="sample_3_tools">
+                                                <li>
+                                                    <a href="javascript:;" data-action="0" class="tool-action">
+                                                        <i class="icon-printer"></i> Print</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;" data-action="1" class="tool-action">
+                                                        <i class="icon-check"></i> Copy</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;" data-action="2" class="tool-action">
+                                                        <i class="icon-doc"></i> PDF</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;" data-action="3" class="tool-action">
+                                                        <i class="icon-paper-clip"></i> Excel</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;" data-action="4" class="tool-action">
+                                                        <i class="icon-cloud-upload"></i> CSV</a>
+                                                </li>
+                                                <li class="divider"> </li>
+                                                <li>
+                                                    <a href="javascript:;" data-action="5" class="tool-action">
+                                                        <i class="icon-refresh"></i> Reload</a>
+                                                </li>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <div class="table-container">
+                                        <table class="table table-striped table-bordered table-hover" id="sample_3">
+                                        <thead>
+                                            <tr>
+                                            <th> No </th>
+                                            <th> Nama Prodi </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="bodytablepeserta">
+                                    
+                                        </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END EXAMPLE TABLE PORTLET-->
+                        </div>
+						<div class="modal-footer">
+							<button type="button" class="btn grey-salsa btn-outline" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>	
+            <!-- END CONTENT -->
+        </div>
         <!-- END CONTAINER -->
         <?php $this->load->view('template/footer') ?>
 
@@ -244,6 +330,34 @@ License: You must have a valid license purchased only from themeforest(the above
                     window.location.href = "<?php echo base_url();?>rekap_all_unit/indikator/" + document.getElementById("id_back_indikator").value;
 				});
 
+                function detiltindakan(indikator_id, dilakukan, subindikator_id){
+                $.get("<?php echo base_url();?>rekap_all_unit/tindakan/"+indikator_id+"/"+dilakukan+"/"+subindikator_id+"/", function( data ) {
+                    console.log(data);
+                        $("#bodytablepeserta").html("");
+                    // $.get(base_url+"welcome/read/"+id, function( data ) {                   
+                    for(var i = 0; i<data.length; i++){
+                        $("#bodytablepeserta").append('<tr>'+
+						'<th> '+ (i+1) +' </th>'+
+						'<th> '+data[i].unit+'  </th>'+
+						'<th> '+data[i].nama_unit+'  </th></tr>');
+                    }
+                });
+                $('#detail_modal').modal('show'); 
+            }
+
+            function detildokpendukung(indikator_id, ketersediaan, kesesuaian, subindikator_id, komponen_id){
+                $.get("<?php echo base_url();?>rekap_all_unit/dokpendukung/"+indikator_id+"/"+ketersediaan+"/"+kesesuaian+"/"+subindikator_id+"/"+komponen_id, function( data ) {
+                    //console.log(data);
+                        $("#bodytablepeserta").html("");
+                    // $.get(base_url+"welcome/read/"+id, function( data ) {                   
+                    for(var i = 0; i<data.length; i++){
+                        $("#bodytablepeserta").append('<tr>'+
+						'<th> '+ (i+1) +' </th>'+
+						'<th> '+data[i].nama_unit+'  </th></tr>');
+                    }
+                });
+                $('#detail_modal').modal('show'); 
+            }
         </script>
     </body>
 

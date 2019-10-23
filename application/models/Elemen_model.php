@@ -105,7 +105,7 @@ class Elemen_model extends CI_Model
         $query = $this->db->query($sql);
         $subindikator = $query->result();
 
-        $sql = "select k.id,subindikator_id, k.jenis, ROUND((COUNT(IF(ketersediaan = 1, 1, NULL))/COUNT(ketersediaan)*100),2) ya_ketersediaan,  ROUND((COUNT(IF(ketersediaan <> 1, 1, NULL))/COUNT(ketersediaan)*100),2) tidak_ketersediaan ,
+        $sql = "select k.id,i.id indikator_id,subindikator_id, k.jenis, ROUND((COUNT(IF(ketersediaan = 1, 1, NULL))/COUNT(ketersediaan)*100),2) ya_ketersediaan,  ROUND((COUNT(IF(ketersediaan <> 1, 1, NULL))/COUNT(ketersediaan)*100),2) tidak_ketersediaan ,
         ROUND((COUNT(IF(kesesuaian = 1, 1, NULL))/COUNT(kesesuaian)*100),2) ya_kesesuaian,  ROUND((COUNT(IF(kesesuaian <> 1, 1, NULL))/COUNT(kesesuaian)*100),2) tidak_kesesuaian 
          FROM elemen e JOIN indikator i ON e.id = i.elemen_id JOIN subindikator s ON i.id = s.indikator_id JOIN komponen k ON k.subindikator_id = s.id 
          LEFT JOIN dokpendukung d ON d.komponen_id = k.id    
@@ -118,4 +118,53 @@ class Elemen_model extends CI_Model
         $data_final['komponen'] = $komponen;
         return $data_final;
         }
+
+        function getdetaildilakukan($indikator_id,$dilakukan, $subindikator_id){
+
+            $sql = "SELECT s.id,ss.unit, un.nama_unit, s.jenis
+            FROM elemen e 
+            JOIN indikator i ON e.id = i.elemen_id 
+            JOIN subindikator s ON i.id = s.indikator_id 
+            JOIN tindakan t ON t.subindikator_id = s.id 
+            JOIN survei ss ON t.survei_id = ss.id 
+            JOIN simpeg_0511.m_unit un ON un.kode_unit = ss.unit 
+            WHERE i.id = $indikator_id AND dilakukan = $dilakukan AND s.id = $subindikator_id AND ss.status != 0 AND t.dilakukan IS NOT NULL 
+            GROUP BY ID,ss.unit ORDER BY un.nama_unit";
+            $query = $this->db->query($sql);
+            $capaian = $query->result();
+
+        
+            return $capaian;
+            }
+
+
+            function getdokpendukung($indikator_id,$ketersediaan = null, $kesesuaian = null, $subindikator_id, $komponen_id){
+                $filter = "";
+                if($ketersediaan <> "null"){
+                    $filter = "AND ketersediaan = $ketersediaan ";
+                }
+
+                if($kesesuaian <> "null"){
+                    $filter = "AND kesesuaian = $kesesuaian ";
+                }
+                
+                $sql = "SELECT k.id,subindikator_id,  ss.unit, un.nama_unit 
+                FROM elemen e 
+                JOIN indikator i ON e.id = i.elemen_id 
+                JOIN subindikator s ON i.id = s.indikator_id 
+                JOIN komponen k ON k.subindikator_id = s.id  
+                JOIN dokpendukung d ON d.komponen_id = k.id 
+                JOIN survei ss ON d.survei_id = ss.id 
+                JOIN simpeg_0511.m_unit un ON un.kode_unit = ss.unit 
+                WHERE i.id = $indikator_id 
+                $filter                
+                AND subindikator_id = $subindikator_id 
+                AND k.id = $komponen_id
+                GROUP BY ID,ss.unit ORDER BY un.nama_unit";
+                $query = $this->db->query($sql);
+                $capaian = $query->result();
+
+            
+                return $capaian;
+            }
     }
