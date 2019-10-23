@@ -158,7 +158,7 @@ class Elemen_model extends CI_Model
                 JOIN simpeg_0511.m_unit un ON un.kode_unit = ss.unit 
                 WHERE i.id = $indikator_id 
                 $filter                
-                AND subindikator_id = $subindikator_id 
+                AND subindikator_id = $subindikator_id AND ss.status != 0
                 AND k.id = $komponen_id
                 GROUP BY ID,ss.unit ORDER BY un.nama_unit";
                 $query = $this->db->query($sql);
