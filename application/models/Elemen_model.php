@@ -26,6 +26,14 @@ class Elemen_model extends CI_Model
         
     function get_id_indikator() 
     { 
+        $strSql = 'select i.id  FROM elemen e LEFT JOIN indikator i ON e.id = i.elemen_id where e.isdelete = 0 and i.isdelete = 0 order by id';
+        $query = $this->db->query($strSql);
+        $data = $query->result_array();
+        return $data;
+    }
+
+    function get_rekap_id_indikator() 
+    { 
         $strSql = 'select i.id  FROM elemen e LEFT JOIN indikator i ON e.id = i.elemen_id where e.isdelete = 0 and i.isdelete = 0 and iskualitatif = "0" order by id';
         $query = $this->db->query($strSql);
         $data = $query->result_array();

@@ -100,7 +100,7 @@ class Rekap_all_unit extends CI_Controller
          //$data['finish'] = $finish;
          $_SESSION['subindikator'] = $res['subindikator'];
          $_SESSION['komponen'] = $res['komponen'];
-         $list_indikator = $this->Elemen_model->get_id_indikator();
+         $list_indikator = $this->Elemen_model->get_rekap_id_indikator();
          $array_indikator_lenght = sizeof($list_indikator);
          $array_id = (array_search($id, array_column($list_indikator, 'id')));
       
